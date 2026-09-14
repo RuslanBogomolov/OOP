@@ -44,12 +44,4 @@ public class Main {
             heapify(arr, i, 0);
         }
     }
-    public void main(String[] args) {
-        int[] numbers = {1, 10, 3, 4, 5};
-        heapSort(numbers);
-
-        for (int x : numbers) {
-            System.out.print(x + " ");
-        }
-    }
 }
