@@ -1,11 +1,8 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
   pull_request:
-    branches: [ "main" ]  
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
@@ -14,16 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./${{ github.event.pull_request.title }}
+        working-directory: ./Task_1_1_1
     steps:
-      - uses: actions/checkout@v3
-      
+      - uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-    
+
       - name: Execute Gradle build
         run: ./gradlew build
 
@@ -34,7 +38,7 @@ jobs:
         id: jacoco
         uses: madrapps/jacoco-report@v1.2
         with:
-          paths: ./${{ github.event.pull_request.title }}/build/reports/jacoco/test/jacocoTestReport.xml
+          paths: ./Task_1_1_1/build/reports/jacoco/test/jacocoTestReport.xml
           token: ${{ secrets.GITHUB_TOKEN }}
           min-coverage-overall: 80
           min-coverage-changed-files: 80
@@ -48,14 +52,14 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
-          folder: ${{ github.event.pull_request.title }}/build/docs/javadoc
-          target-folder: ${{ github.event.pull_request.title }}
+          folder: ./Task_1_1_1/build/docs/javadoc
+          target-folder: Task_1_1_1
 
   checkstyle:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run check style
         uses: nikitasavinov/checkstyle-action@master
