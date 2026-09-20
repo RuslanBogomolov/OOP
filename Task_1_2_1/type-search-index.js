@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.bogomolov","l":"Card"},{"p":"ru.nsu.bogomolov","l":"Main"},{"p":"ru.nsu.bogomolov","l":"Nominal"},{"p":"ru.nsu.bogomolov","l":"Suit"}];updateSearchResults();
