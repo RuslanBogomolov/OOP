@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 /**
  * Консольная версия игры в блэкджек.
- * Игра продолжается до тех пор, пока пользователь не завершит программу.
- * За один раунд игрок сначала получает две карты, затем по очереди ходят
- * игрок и дилер.
+ * Игра продолжается до завершения пользователем.
+ * За раунд выдаются карты, затем ходят игрок и дилер.
  */
 public class Main {
     private final Deck deck;
@@ -16,7 +15,7 @@ public class Main {
     private final GameScore gameScore;
 
     /**
-     * Подготавливает новую колоду, участников и ввод с клавиатуры.
+     * Подготавливает колоду, участников и ввод.
      */
     public Main() {
         this.deck = new Deck(1);
@@ -60,7 +59,8 @@ public class Main {
 
         if (playerBusted) {
             gameScore.dealerWon();
-            System.out.println("\nВы проиграли раунд! Превышение 21 очка.");
+            System.out.println("\nВы проиграли раунд! "
+                    + "Превышение 21 очка.");
             printOverallScore();
             return;
         }
@@ -69,7 +69,8 @@ public class Main {
 
         if (dealerBusted) {
             gameScore.playerWon();
-            System.out.println("Вы выиграли раунд! Счет " + getScoreString() + " в вашу пользу.");
+            System.out.println("Вы выиграли раунд! Счет "
+                    + getScoreString() + " в вашу пользу.");
             return;
         }
 
@@ -77,16 +78,17 @@ public class Main {
     }
 
     /**
-     * Читает решения игрока и выдаёт карты, пока игрок не остановится
-     * или не наберёт больше 21 очка.
-     * @return true, если игрок проиграл из-за превышения 21
+     * Читает решения игрока и выдаёт карты.
+     *
+     * @return true, если игрок проиграл из-за перебора
      */
     private boolean handlePlayerTurn() {
         System.out.println("\nВаш ход");
         System.out.println("-------");
 
         while (true) {
-            System.out.print("Введите “1”, чтобы взять карту, и “0”, чтобы остановиться . ");
+            System.out.print("Введите “1” — взять карту, "
+                    + "“0” — остановиться: ");
             if (!scanner.hasNextLine()) {
                 return false;
             }
@@ -95,7 +97,8 @@ public class Main {
             if ("1".equals(input)) {
                 Card drawn = drawCard();
                 player.getHand().addCard(drawn);
-                System.out.println("Вы открыли карту " + drawn + " (" + drawn.getNominal().getBaseValue() + ")");
+                System.out.println("Вы открыли карту " + drawn + " ("
+                        + drawn.getNominal().getBaseValue() + ")");
                 printState(true);
 
                 if (player.isBusted()) {
@@ -111,7 +114,8 @@ public class Main {
     }
 
     /**
-     * Открывает вторую карту дилера и выполняет его обязательный ход.
+     * Открывает вторую карту дилера и выполняет его ход.
+     *
      * @return true, если дилер набрал больше 21
      */
     private boolean handleDealerTurn() {
@@ -119,13 +123,15 @@ public class Main {
         System.out.println("-------");
 
         Card hiddenCard = dealer.getHand().getCards().get(1);
-        System.out.println("Дилер открывает закрытую карту " + hiddenCard + " (" + hiddenCard.getNominal().getBaseValue() + ")");
+        System.out.println("Дилер открывает закрытую карту " + hiddenCard
+                + " (" + hiddenCard.getNominal().getBaseValue() + ")");
         printState(false);
 
         while (dealer.shouldHit()) {
             Card drawn = drawCard();
             dealer.getHand().addCard(drawn);
-            System.out.println("\nДилер открывает карту " + drawn + " (" + drawn.getNominal().getBaseValue() + ")");
+            System.out.println("\nДилер открывает карту " + drawn + " ("
+                    + drawn.getNominal().getBaseValue() + ")");
             printState(false);
 
             if (dealer.isBusted()) {
@@ -136,7 +142,7 @@ public class Main {
     }
 
     /**
-     * Обрабатывает ситуацию, когда у одного или обоих участников блэкджек.
+     * Обрабатывает блэкджек участников.
      */
     private void resolveBlackjack() {
         System.out.println("\nРезультат раздачи:");
@@ -146,17 +152,19 @@ public class Main {
             System.out.println("Ничья! У обоих блэкджек.");
         } else if (player.hasBlackjack()) {
             gameScore.playerWon();
-            System.out.println("У вас блэкджек! Вы выиграли раунд. Счет "
+            System.out.println("У вас блэкджек! Вы выиграли раунд. "
+                    + "Счет "
                     + getScoreString() + " в вашу пользу.");
         } else {
             gameScore.dealerWon();
-            System.out.println("У дилера блэкджек! Вы проиграли раунд.");
+            System.out.println("У дилера блэкджек! "
+                    + "Вы проиграли раунд.");
         }
         printOverallScore();
     }
 
     /**
-     * Сравнивает очки игрока и дилера и увеличивает счёт победителя.
+     * Сравнивает очки и увеличивает счёт победителя.
      */
     private void determineWinner() {
         int playerScore = player.getScore();
@@ -164,25 +172,33 @@ public class Main {
 
         if (playerScore > dealerScore) {
             gameScore.playerWon();
-            System.out.println("\nВы выиграли раунд! Счет " + getScoreString() + " в вашу пользу.");
+            System.out.println("\nВы выиграли раунд! Счет "
+                    + getScoreString() + " в вашу пользу.");
         } else if (dealerScore > playerScore) {
             gameScore.dealerWon();
-            System.out.println("\nДилер выиграл раунд! Счет " + getScoreString() + ".");
+            System.out.println("\nДилер выиграл раунд! Счет "
+                    + getScoreString() + ".");
         } else {
-            System.out.println("\nНичья в раунде! Счет остается " + getScoreString() + ".");
+            System.out.println("\nНичья в раунде! Счет остается "
+                    + getScoreString() + ".");
         }
     }
 
     /**
      * Печатает карты обоих участников.
+     *
      * @param hideDealerCard нужно ли скрыть вторую карту дилера
      */
     private void printState(boolean hideDealerCard) {
-        System.out.println("\tВаши карты: " + player.getHand().toDisplayString(false));
-        System.out.println("Карты дилера: " + dealer.getHand().toDisplayString(hideDealerCard));
+        System.out.println("\tВаши карты: "
+                + player.getHand().toDisplayString(false));
+        System.out.println("Карты дилера: "
+                + dealer.getHand().toDisplayString(hideDealerCard));
     }
 
     /**
+     * Возвращает текущий счёт.
+     *
      * @return счёт в формате «победы игрока:победы дилера»
      */
     private String getScoreString() {
@@ -197,24 +213,29 @@ public class Main {
     }
 
     /**
-     * Выдаёт карту и предлагает добавить новую колоду, если текущая пуста.
+     * Выдаёт карту, при необходимости добавляя колоду.
      *
      * @return следующая карта
      */
     private Card drawCard() {
         while (deck.isEmpty()) {
-            System.out.print("\nКолода закончилась. Добавить новую колоду? "
+            System.out.print("\nКолода закончилась. "
+                    + "Добавить новую колоду? "
                     + "Введите \"1\" для подтверждения: ");
             if (!scanner.hasNextLine()) {
-                throw new IllegalStateException("Ввод завершён до добавления новой колоды");
+                throw new IllegalStateException(
+                        "Ввод завершён до добавления новой "
+                                + "колоды");
             }
             String input = scanner.nextLine().trim();
 
             if ("1".equals(input)) {
                 deck.addDeck();
-                System.out.println("Новая колода добавлена и перемешана.");
+                System.out.println("Новая колода добавлена и "
+                        + "перемешана.");
             } else {
-                System.out.println("Чтобы продолжить игру, нужно добавить колоду.");
+                System.out.println("Чтобы продолжить игру, "
+                        + "нужно добавить колоду.");
             }
         }
         return deck.drawCard();
@@ -222,6 +243,7 @@ public class Main {
 
     /**
      * Точка входа в приложение.
+     *
      * @param args аргументы командной строки, не используются
      */
     public static void main(String[] args) {

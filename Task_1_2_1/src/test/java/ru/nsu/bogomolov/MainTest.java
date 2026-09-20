@@ -1,8 +1,5 @@
 package ru.nsu.bogomolov;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -12,6 +9,9 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -19,15 +19,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Проверяет основные правила блэкджека и работу отдельных игровых объектов.
+ * Проверяет правила блэкджека и игровые объекты.
  */
 class MainTest {
     private static final InputStream ORIGINAL_INPUT = System.in;
     private static final PrintStream ORIGINAL_OUTPUT = System.out;
 
     /**
-     * Тесты меняют стандартные потоки для проверки консольного ввода.
-     * После каждого теста возвращаем исходные потоки.
+     * Тесты меняют стандартные потоки.
+     * После каждого теста потоки возвращаются.
      */
     @AfterEach
     void restoreConsole() {
@@ -239,7 +239,7 @@ class MainTest {
     }
 
     @Test
-    void hidingTheOnlyCardDoesNotAddAHiddenCard() {
+    void hidingOnlyCardDoesNotAddHiddenCard() {
         Hand hand = new Hand();
         hand.addCard(new Card(Suit.HEARTS, Nominal.TEN));
 
@@ -428,7 +428,7 @@ class MainTest {
     void blackjackResolutionAwardsPlayerWin() throws Exception {
         Main game = newGame("");
         Player player = field(game, "player", Player.class);
-        GameScore score = field(game, "gameScore", GameScore.class);
+        final GameScore score = field(game, "gameScore", GameScore.class);
         player.getHand().addCard(new Card(Suit.HEARTS, Nominal.ACE));
         player.getHand().addCard(new Card(Suit.SPADES, Nominal.KING));
 
@@ -441,7 +441,7 @@ class MainTest {
     void blackjackResolutionAwardsDealerWin() throws Exception {
         Main game = newGame("");
         Dealer dealer = field(game, "dealer", Dealer.class);
-        GameScore score = field(game, "gameScore", GameScore.class);
+        final GameScore score = field(game, "gameScore", GameScore.class);
         dealer.getHand().addCard(new Card(Suit.HEARTS, Nominal.ACE));
         dealer.getHand().addCard(new Card(Suit.SPADES, Nominal.KING));
 
@@ -451,11 +451,11 @@ class MainTest {
     }
 
     @Test
-    void blackjackResolutionCanEndInATie() throws Exception {
+    void blackjackResolutionCanEndInTie() throws Exception {
         Main game = newGame("");
         Player player = field(game, "player", Player.class);
         Dealer dealer = field(game, "dealer", Dealer.class);
-        GameScore score = field(game, "gameScore", GameScore.class);
+        final GameScore score = field(game, "gameScore", GameScore.class);
         player.getHand().addCard(new Card(Suit.HEARTS, Nominal.ACE));
         player.getHand().addCard(new Card(Suit.SPADES, Nominal.KING));
         dealer.getHand().addCard(new Card(Suit.CLUBS, Nominal.ACE));
@@ -472,7 +472,7 @@ class MainTest {
         Main game = newGame("");
         Player player = field(game, "player", Player.class);
         Dealer dealer = field(game, "dealer", Dealer.class);
-        GameScore score = field(game, "gameScore", GameScore.class);
+        final GameScore score = field(game, "gameScore", GameScore.class);
 
         player.getHand().addCard(new Card(Suit.HEARTS, Nominal.TEN));
         dealer.getHand().addCard(new Card(Suit.CLUBS, Nominal.NINE));
@@ -496,7 +496,7 @@ class MainTest {
     }
 
     /**
-     * Создаёт игру с заранее подготовленным вводом пользователя.
+     * Создаёт игру с подготовленным вводом.
      *
      * @param input строки, которые будут прочитаны игрой
      * @return новая игра
@@ -508,7 +508,7 @@ class MainTest {
     }
 
     /**
-     * Получает закрытое поле игрового объекта для проверки его состояния.
+     * Получает закрытое поле игрового объекта.
      *
      * @param object объект, из которого нужно получить поле
      * @param name имя поля
@@ -526,14 +526,14 @@ class MainTest {
     }
 
     /**
-     * Вызывает закрытый метод игры в интеграционном тесте.
+     * Вызывает закрытый метод игры.
      *
      * @param object объект, на котором вызывается метод
      * @param name имя метода без параметров
      * @param arguments аргументы вызова
      * @param <T> тип результата
      * @return результат работы метода
-     * @throws Exception если метод не найден или завершился ошибкой
+     * @throws Exception если метод недоступен
      */
     @SuppressWarnings("unchecked")
     private static <T> T invoke(Object object, String name, Object... arguments)

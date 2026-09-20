@@ -11,6 +11,7 @@ class Hand {
 
     /**
      * Добавляет карту в руку.
+     *
      * @param card карта для добавления
      */
     public void addCard(Card card) {
@@ -25,6 +26,8 @@ class Hand {
     }
 
     /**
+     * Возвращает карты в порядке их получения.
+     *
      * @return список карт в порядке их получения
      */
     public List<Card> getCards() {
@@ -32,7 +35,8 @@ class Hand {
     }
 
     /**
-     * Считает очки с учётом того, что туз может стоить 1 или 11.
+     * Считает очки с учётом значения туза 1 или 11.
+     *
      * @return итоговое количество очков
      */
     public int calculateScore() {
@@ -55,7 +59,8 @@ class Hand {
     }
 
     /**
-     * Определяет, сколько тузов сейчас считаются единицами.
+     * Определяет количество тузов со значением 1.
+     *
      * @return количество тузов со значением 1
      */
     public int getReducedAcesCount() {
@@ -80,11 +85,14 @@ class Hand {
 
     /**
      * Формирует строку для вывода руки в консоль.
+     *
      * @param hideSecondCard нужно ли скрыть вторую карту
-     * @return представление карт и, если карты открыты, их сумму
+     * @return карты и сумму, если карты открыты
      */
     public String toDisplayString(boolean hideSecondCard) {
-        if (cards.isEmpty()) return "[]";
+        if (cards.isEmpty()) {
+            return "[]";
+        }
 
         StringBuilder sb = new StringBuilder("[");
         int reducedAcesToApply = getReducedAcesCount();

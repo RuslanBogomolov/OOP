@@ -17,6 +17,7 @@ public enum Suit {
 
     /**
      * Возвращает значок, используемый при печати карты.
+     *
      * @return символ масти
      */
     public String getSymbol() {

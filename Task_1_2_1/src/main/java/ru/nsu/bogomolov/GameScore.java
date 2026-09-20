@@ -10,6 +10,7 @@ class GameScore {
 
     /**
      * Переходит к следующему раунду.
+     *
      * @return номер начавшегося раунда
      */
     public int startRound() {
@@ -31,6 +32,8 @@ class GameScore {
     }
 
     /**
+     * Возвращает количество сыгранных раундов.
+     *
      * @return количество сыгранных раундов
      */
     public int getRoundNumber() {
@@ -38,6 +41,8 @@ class GameScore {
     }
 
     /**
+     * Возвращает количество побед игрока.
+     *
      * @return количество побед игрока
      */
     public int getPlayerWins() {
@@ -45,6 +50,8 @@ class GameScore {
     }
 
     /**
+     * Возвращает количество побед дилера.
+     *
      * @return количество побед дилера
      */
     public int getDealerWins() {
@@ -52,6 +59,8 @@ class GameScore {
     }
 
     /**
+     * Возвращает счёт в текстовом формате.
+     *
      * @return счёт в формате «победы игрока:победы дилера»
      */
     @Override

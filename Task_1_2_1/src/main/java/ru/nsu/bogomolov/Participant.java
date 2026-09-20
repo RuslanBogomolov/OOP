@@ -8,6 +8,8 @@ abstract class Participant {
     protected final Hand hand = new Hand();
 
     /**
+     * Создаёт участника игры.
+     *
      * @param name имя участника
      */
     public Participant(String name) {
@@ -15,13 +17,23 @@ abstract class Participant {
     }
 
     /**
+     * Возвращает имя участника.
+     *
      * @return имя участника
      */
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
+
     /**
+     * Возвращает руку участника.
+     *
      * @return рука участника
      */
-    public Hand getHand() { return hand; }
+    public Hand getHand() {
+        return hand;
+    }
+
     /**
      * Возвращает текущую сумму очков.
      * @return текущая сумма очков
@@ -40,6 +52,8 @@ abstract class Participant {
 
     /**
      * Проверяет наличие блэкджека на первых двух картах.
+     * Проверяет наличие блэкджека на первых двух картах.
+     *
      * @return true, если на руке ровно две карты на 21 очко
      */
     public boolean hasBlackjack() {
@@ -51,31 +65,5 @@ abstract class Participant {
      */
     public void resetHand() {
         hand.clear();
-    }
-}
-
-class Player extends Participant {
-    /**
-     * @param name имя игрока
-     */
-    public Player(String name) {
-        super(name);
-    }
-}
-
-class Dealer extends Participant {
-    /**
-     * Создаёт дилера с фиксированным именем.
-     */
-    public Dealer() {
-        super("Дилер");
-    }
-
-    /**
-     * Дилер берёт карту, пока его сумма меньше 17.
-     * @return true, если дилеру нужно взять карту
-     */
-    public boolean shouldHit() {
-        return getScore() < 17;
     }
 }
