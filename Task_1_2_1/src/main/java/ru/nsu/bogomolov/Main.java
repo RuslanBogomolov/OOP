@@ -8,7 +8,7 @@ import java.util.Scanner;
  * За раунд выдаются карты, затем ходят игрок и дилер.
  */
 public class Main {
-    private final Deck deck;
+    private Deck deck;
     private final Player player;
     private final Dealer dealer;
     private final Scanner scanner;
@@ -30,9 +30,37 @@ public class Main {
      */
     public void start() {
         System.out.println("Добро пожаловать в Блэкджек!");
+        deck = new Deck(readDeckCount());
 
         while (true) {
             playRound();
+        }
+    }
+
+    /**
+     * Запрашивает у пользователя количество колод для игры.
+     *
+     * @return положительное количество колод
+     */
+    private int readDeckCount() {
+        while (true) {
+            System.out.print("Введите количество колод: ");
+            if (!scanner.hasNextLine()) {
+                throw new IllegalStateException(
+                        "Ввод завершён до указания количества колод");
+            }
+
+            String input = scanner.nextLine().trim();
+            try {
+                int deckCount = Integer.parseInt(input);
+                if (deckCount > 0) {
+                    return deckCount;
+                }
+            } catch (NumberFormatException ignored) {
+                // Некорректное значение будет обработано сообщением ниже.
+            }
+
+            System.out.println("Введите положительное целое число.");
         }
     }
 
