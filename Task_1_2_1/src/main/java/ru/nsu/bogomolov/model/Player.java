@@ -1,9 +1,9 @@
-package ru.nsu.bogomolov;
+package ru.nsu.bogomolov.model;
 
 /**
  * Игрок в блэкджек.
  */
-class Player extends Participant {
+public class Player extends Participant {
     /**
      * Создаёт игрока.
      *

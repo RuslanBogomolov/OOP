@@ -9,6 +9,11 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
+import ru.nsu.bogomolov.game.BlackjackGame;
+import ru.nsu.bogomolov.game.GameScore;
+import ru.nsu.bogomolov.model.*;
+import ru.nsu.bogomolov.ui.ConsoleInterface;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -391,7 +396,38 @@ class MainTest {
 
     @Test
     void playerCanStopAfterAnInvalidInput() throws Exception {
-        Main game = newGame("wrong\n0\n");
+        BlackjackGame game = newGame("wrong\n0\n");
+
+        boolean busted = invoke(game, "handlePlayerTurn");
+
+        assertFalse(busted);
+    }
+
+    @Test
+    void deckCountInputRejectsInvalidValues() throws Exception {
+        BlackjackGame game = newGame("text\n0\n3\n");
+
+        int deckCount = invoke(game, "readDeckCount");
+
+        assertEquals(3, deckCount);
+    }
+
+    @Test
+    void emptyDeckInputCanBeRejectedBeforeAddingDeck() throws Exception {
+        BlackjackGame game = newGame("0\n1\n");
+        Deck deck = field(game, "deck", Deck.class);
+        for (int i = 0; i < 52; i++) {
+            deck.drawCard();
+        }
+
+        Card card = invoke(game, "drawCard");
+
+        assertNotNull(card);
+    }
+
+    @Test
+    void playerTurnEndsWhenInputIsClosed() throws Exception {
+        BlackjackGame game = newGame("");
 
         boolean busted = invoke(game, "handlePlayerTurn");
 
@@ -400,7 +436,7 @@ class MainTest {
 
     @Test
     void emptyDeckCanBeFilledThroughGameInput() throws Exception {
-        Main game = newGame("1\n");
+        BlackjackGame game = newGame("1\n");
         Deck deck = field(game, "deck", Deck.class);
         for (int i = 0; i < 52; i++) {
             deck.drawCard();
@@ -414,7 +450,7 @@ class MainTest {
 
     @Test
     void dealerStopsWhenItsScoreReachesSeventeen() throws Exception {
-        Main game = newGame("");
+        BlackjackGame game = newGame("");
         Dealer dealer = field(game, "dealer", Dealer.class);
         dealer.getHand().addCard(new Card(Suit.HEARTS, Nominal.TEN));
         dealer.getHand().addCard(new Card(Suit.CLUBS, Nominal.SEVEN));
@@ -426,7 +462,7 @@ class MainTest {
 
     @Test
     void blackjackResolutionAwardsPlayerWin() throws Exception {
-        Main game = newGame("");
+        BlackjackGame game = newGame("");
         Player player = field(game, "player", Player.class);
         final GameScore score = field(game, "gameScore", GameScore.class);
         player.getHand().addCard(new Card(Suit.HEARTS, Nominal.ACE));
@@ -439,7 +475,7 @@ class MainTest {
 
     @Test
     void blackjackResolutionAwardsDealerWin() throws Exception {
-        Main game = newGame("");
+        BlackjackGame game = newGame("");
         Dealer dealer = field(game, "dealer", Dealer.class);
         final GameScore score = field(game, "gameScore", GameScore.class);
         dealer.getHand().addCard(new Card(Suit.HEARTS, Nominal.ACE));
@@ -452,7 +488,7 @@ class MainTest {
 
     @Test
     void blackjackResolutionCanEndInTie() throws Exception {
-        Main game = newGame("");
+        BlackjackGame game = newGame("");
         Player player = field(game, "player", Player.class);
         Dealer dealer = field(game, "dealer", Dealer.class);
         final GameScore score = field(game, "gameScore", GameScore.class);
@@ -469,7 +505,7 @@ class MainTest {
 
     @Test
     void winnerIsSelectedForBothScoreOrdersAndTie() throws Exception {
-        Main game = newGame("");
+        BlackjackGame game = newGame("");
         Player player = field(game, "player", Player.class);
         Dealer dealer = field(game, "dealer", Dealer.class);
         final GameScore score = field(game, "gameScore", GameScore.class);
@@ -501,10 +537,11 @@ class MainTest {
      * @param input строки, которые будут прочитаны игрой
      * @return новая игра
      */
-    private static Main newGame(String input) {
+    private static BlackjackGame newGame(String input) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         System.setOut(new PrintStream(new ByteArrayOutputStream()));
-        return new Main();
+        return new BlackjackGame(new Deck(1), new Player("Игрок"),
+                new Dealer(), new ConsoleInterface(), new GameScore());
     }
 
     /**

@@ -1,4 +1,4 @@
-package ru.nsu.bogomolov;
+package ru.nsu.bogomolov.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Карты, собранные одним участником текущего раунда.
  */
-class Hand {
+public class Hand {
     private final List<Card> cards = new ArrayList<>();
 
     /**

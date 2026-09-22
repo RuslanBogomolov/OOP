@@ -1,9 +1,9 @@
-package ru.nsu.bogomolov;
+package ru.nsu.bogomolov.model;
 
 /**
  * Общая логика игрока и дилера.
  */
-abstract class Participant {
+public abstract class Participant {
     private final String name;
     protected final Hand hand = new Hand();
 

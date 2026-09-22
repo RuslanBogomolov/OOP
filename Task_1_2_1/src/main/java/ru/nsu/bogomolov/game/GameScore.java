@@ -1,9 +1,9 @@
-package ru.nsu.bogomolov;
+package ru.nsu.bogomolov.game;
 
 /**
  * Хранит результаты сыгранных раундов.
  */
-class GameScore {
+public class GameScore {
     private int roundNumber;
     private int playerWins;
     private int dealerWins;

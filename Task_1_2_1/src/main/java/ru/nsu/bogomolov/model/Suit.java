@@ -1,4 +1,4 @@
-package ru.nsu.bogomolov;
+package ru.nsu.bogomolov.model;
 
 /**
  * Четыре масти стандартной колоды.

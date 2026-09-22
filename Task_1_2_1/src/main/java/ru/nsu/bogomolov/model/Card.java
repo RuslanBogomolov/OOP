@@ -1,4 +1,4 @@
-package ru.nsu.bogomolov;
+package ru.nsu.bogomolov.model;
 
 /**
  * Одна игральная карта с мастью и достоинством.
