@@ -1,5 +1,11 @@
 package ru.nsu.bogomolov;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -9,19 +15,18 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
-import ru.nsu.bogomolov.game.BlackjackGame;
-import ru.nsu.bogomolov.game.GameScore;
-import ru.nsu.bogomolov.model.*;
-import ru.nsu.bogomolov.ui.ConsoleInterface;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import ru.nsu.bogomolov.game.BlackjackGame;
+import ru.nsu.bogomolov.game.GameScore;
+import ru.nsu.bogomolov.model.Card;
+import ru.nsu.bogomolov.model.Dealer;
+import ru.nsu.bogomolov.model.Deck;
+import ru.nsu.bogomolov.model.Hand;
+import ru.nsu.bogomolov.model.Nominal;
+import ru.nsu.bogomolov.model.Player;
+import ru.nsu.bogomolov.model.Suit;
+import ru.nsu.bogomolov.ui.ConsoleInterface;
 
 /**
  * Проверяет правила блэкджека и игровые объекты.

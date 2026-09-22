@@ -1,9 +1,8 @@
 package ru.nsu.bogomolov.ui;
 
+import java.util.Scanner;
 import ru.nsu.bogomolov.model.Dealer;
 import ru.nsu.bogomolov.model.Player;
-
-import java.util.Scanner;
 
 /**
  * Отвечает за консольный ввод и вывод игры.

@@ -36,6 +36,7 @@ public abstract class Participant {
 
     /**
      * Возвращает текущую сумму очков.
+     *
      * @return текущая сумма очков
      */
     public int getScore() {
@@ -44,6 +45,7 @@ public abstract class Participant {
 
     /**
      * Проверяет, превысил ли участник допустимую сумму.
+     *
      * @return true, если сумма очков больше 21
      */
     public boolean isBusted() {
