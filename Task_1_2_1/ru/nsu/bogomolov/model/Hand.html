@@ -120,20 +120,30 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Удаляет все карты из руки.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Card.html" title="class in ru.nsu.bogomolov.model">Card</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCards()" class="member-name-link">getCards</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="Card.html" title="class in ru.nsu.bogomolov.model">Card</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCard(int)" class="member-name-link">getCard</a><wbr>(int&nbsp;index)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Возвращает карту по её позиции в руке.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="Card.html" title="class in ru.nsu.bogomolov.model">Card</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCards()" class="member-name-link">getCards</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Возвращает карты в порядке их получения.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getReducedAcesCount()" class="member-name-link">getReducedAcesCount</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getReducedAcesCount()" class="member-name-link">getReducedAcesCount</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Определяет количество тузов со значением 1.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#toDisplayString(boolean)" class="member-name-link">toDisplayString</a><wbr>(boolean&nbsp;hideSecondCard)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getReducedAcesCount(int)" class="member-name-link">getReducedAcesCount</a><wbr>(int&nbsp;cardCount)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Определяет количество уменьшенных тузов среди первых карт руки.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#size()" class="member-name-link">size</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Формирует строку для вывода руки в консоль.</div>
+<div class="block">Возвращает количество карт в руке.</div>
 </div>
 </div>
 </div>
@@ -196,6 +206,30 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="size()">
+<h3>size</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">size</span>()</div>
+<div class="block">Возвращает количество карт в руке.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>количество карт</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getCard(int)">
+<h3>getCard</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="Card.html" title="class in ru.nsu.bogomolov.model">Card</a></span>&nbsp;<span class="element-name">getCard</span><wbr><span class="parameters">(int&nbsp;index)</span></div>
+<div class="block">Возвращает карту по её позиции в руке.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>index</code> - индекс карты</dd>
+<dt>Returns:</dt>
+<dd>карта в указанной позиции</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="calculateScore()">
 <h3>calculateScore</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">calculateScore</span>()</div>
@@ -218,15 +252,15 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="toDisplayString(boolean)">
-<h3>toDisplayString</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">toDisplayString</span><wbr><span class="parameters">(boolean&nbsp;hideSecondCard)</span></div>
-<div class="block">Формирует строку для вывода руки в консоль.</div>
+<section class="detail" id="getReducedAcesCount(int)">
+<h3>getReducedAcesCount</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getReducedAcesCount</span><wbr><span class="parameters">(int&nbsp;cardCount)</span></div>
+<div class="block">Определяет количество уменьшенных тузов среди первых карт руки.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>hideSecondCard</code> - нужно ли скрыть вторую карту</dd>
+<dd><code>cardCount</code> - количество учитываемых карт</dd>
 <dt>Returns:</dt>
-<dd>карты и сумму, если карты открыты</dd>
+<dd>количество тузов со значением 1</dd>
 </dl>
 </section>
 </li>

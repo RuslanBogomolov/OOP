@@ -113,9 +113,20 @@ loadScripts(document, 'script');</script>
 <div class="block">Запрашивает подтверждение добавления новой колоды.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#askHit()" class="member-name-link">askHit</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#askContinue()" class="member-name-link">askContinue</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Запрашивает продолжение игры после завершения раунда.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#askHit()" class="member-name-link">askHit</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Запрашивает решение игрока.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#formatHand(ru.nsu.bogomolov.model.Hand,boolean)" class="member-name-link">formatHand</a><wbr>(<a href="../model/Hand.html" title="class in ru.nsu.bogomolov.model">Hand</a>&nbsp;hand,
+ boolean&nbsp;hideSecondCard)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Форматирует руку для вывода в консоль.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hasNextLine()" class="member-name-link">hasNextLine</a>()</code></div>
@@ -259,6 +270,17 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="askContinue()">
+<h3>askContinue</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">askContinue</span>()</div>
+<div class="block">Запрашивает продолжение игры после завершения раунда.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true, если нужно начать следующий раунд</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="printState(ru.nsu.bogomolov.model.Player,ru.nsu.bogomolov.model.Dealer,boolean)">
 <h3>printState</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">printState</span><wbr><span class="parameters">(<a href="../model/Player.html" title="class in ru.nsu.bogomolov.model">Player</a>&nbsp;player,
@@ -270,6 +292,21 @@ loadScripts(document, 'script');</script>
 <dd><code>player</code> - игрок</dd>
 <dd><code>dealer</code> - дилер</dd>
 <dd><code>hideDealerCard</code> - нужно ли скрыть вторую карту дилера</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="formatHand(ru.nsu.bogomolov.model.Hand,boolean)">
+<h3>formatHand</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">formatHand</span><wbr><span class="parameters">(<a href="../model/Hand.html" title="class in ru.nsu.bogomolov.model">Hand</a>&nbsp;hand,
+ boolean&nbsp;hideSecondCard)</span></div>
+<div class="block">Форматирует руку для вывода в консоль.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>hand</code> - рука</dd>
+<dd><code>hideSecondCard</code> - нужно ли скрыть вторую карту</dd>
+<dt>Returns:</dt>
+<dd>отформатированная рука</dd>
 </dl>
 </section>
 </li>

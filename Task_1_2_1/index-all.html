@@ -66,6 +66,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Запрашивает подтверждение добавления новой колоды.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/ui/ConsoleInterface.html#askContinue()" class="member-name-link">askContinue()</a> - Method in class ru.nsu.bogomolov.ui.<a href="ru/nsu/bogomolov/ui/ConsoleInterface.html" title="class in ru.nsu.bogomolov.ui">ConsoleInterface</a></dt>
+<dd>
+<div class="block">Запрашивает продолжение игры после завершения раунда.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/ui/ConsoleInterface.html#askHit()" class="member-name-link">askHit()</a> - Method in class ru.nsu.bogomolov.ui.<a href="ru/nsu/bogomolov/ui/ConsoleInterface.html" title="class in ru.nsu.bogomolov.ui">ConsoleInterface</a></dt>
 <dd>
 <div class="block">Запрашивает решение игрока.</div>
@@ -85,10 +89,16 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт игру с заданными зависимостями.</div>
 </dd>
-<dt><a href="ru/nsu/bogomolov/game/BlackjackGame.html#%3Cinit%3E(ru.nsu.bogomolov.model.Player,ru.nsu.bogomolov.model.Dealer,ru.nsu.bogomolov.ui.ConsoleInterface,ru.nsu.bogomolov.game.GameScore)" class="member-name-link">BlackjackGame(Player, Dealer, ConsoleInterface, GameScore)</a> - Constructor for class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/BlackjackGame.html" title="class in ru.nsu.bogomolov.game">BlackjackGame</a></dt>
+<dt><a href="ru/nsu/bogomolov/game/BlackjackGame.html#%3Cinit%3E(ru.nsu.bogomolov.model.Deck,ru.nsu.bogomolov.model.Player,ru.nsu.bogomolov.model.Dealer,ru.nsu.bogomolov.ui.ConsoleInterface,ru.nsu.bogomolov.game.GameScore,ru.nsu.bogomolov.game.BlackjackRules)" class="member-name-link">BlackjackGame(Deck, Player, Dealer, ConsoleInterface, GameScore, BlackjackRules)</a> - Constructor for class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/BlackjackGame.html" title="class in ru.nsu.bogomolov.game">BlackjackGame</a></dt>
 <dd>
-<div class="block">Создаёт игру с новой одноколодной колодой.</div>
+<div class="block">Создаёт игру с заданными зависимостями.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/game/BlackjackRules.html" class="type-name-link" title="class in ru.nsu.bogomolov.game">BlackjackRules</a> - Class in <a href="ru/nsu/bogomolov/game/package-summary.html">ru.nsu.bogomolov.game</a></dt>
+<dd>
+<div class="block">Правила определения результата раунда.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/game/BlackjackRules.html#%3Cinit%3E()" class="member-name-link">BlackjackRules()</a> - Constructor for class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/BlackjackRules.html" title="class in ru.nsu.bogomolov.game">BlackjackRules</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:C">C</h2>
 <dl class="index">
@@ -129,6 +139,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт дилера с фиксированным именем.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/game/RoundResult.html#DEALER_WIN" class="member-name-link">DEALER_WIN</a> - Enum constant in enum class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/RoundResult.html" title="enum class in ru.nsu.bogomolov.game">RoundResult</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="ru/nsu/bogomolov/game/GameScore.html#dealerWon()" class="member-name-link">dealerWon()</a> - Method in class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/GameScore.html" title="class in ru.nsu.bogomolov.game">GameScore</a></dt>
 <dd>
 <div class="block">Учитывает победу дилера.</div>
@@ -141,7 +153,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт и перемешивает стандартные колоды.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/game/BlackjackRules.html#determineWinner(ru.nsu.bogomolov.model.Player,ru.nsu.bogomolov.model.Dealer)" class="member-name-link">determineWinner(Player, Dealer)</a> - Method in class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/BlackjackRules.html" title="class in ru.nsu.bogomolov.game">BlackjackRules</a></dt>
+<dd>
+<div class="block">Сравнивает очки игрока и дилера.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/model/Suit.html#DIAMONDS" class="member-name-link">DIAMONDS</a> - Enum constant in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Suit.html" title="enum class in ru.nsu.bogomolov.model">Suit</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru/nsu/bogomolov/game/RoundResult.html#DRAW" class="member-name-link">DRAW</a> - Enum constant in enum class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/RoundResult.html" title="enum class in ru.nsu.bogomolov.game">RoundResult</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/bogomolov/model/Deck.html#drawCard()" class="member-name-link">drawCard()</a> - Method in class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Deck.html" title="class in ru.nsu.bogomolov.model">Deck</a></dt>
 <dd>
@@ -157,6 +175,10 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="ru/nsu/bogomolov/model/Nominal.html#FIVE" class="member-name-link">FIVE</a> - Enum constant in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Nominal.html" title="enum class in ru.nsu.bogomolov.model">Nominal</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="ru/nsu/bogomolov/ui/ConsoleInterface.html#formatHand(ru.nsu.bogomolov.model.Hand,boolean)" class="member-name-link">formatHand(Hand, boolean)</a> - Method in class ru.nsu.bogomolov.ui.<a href="ru/nsu/bogomolov/ui/ConsoleInterface.html" title="class in ru.nsu.bogomolov.ui">ConsoleInterface</a></dt>
+<dd>
+<div class="block">Форматирует руку для вывода в консоль.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/model/Nominal.html#FOUR" class="member-name-link">FOUR</a> - Enum constant in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Nominal.html" title="enum class in ru.nsu.bogomolov.model">Nominal</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -171,6 +193,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/bogomolov/model/Nominal.html#getBaseValue()" class="member-name-link">getBaseValue()</a> - Method in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Nominal.html" title="enum class in ru.nsu.bogomolov.model">Nominal</a></dt>
 <dd>
 <div class="block">Возвращает первоначальную стоимость карты.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/model/Hand.html#getCard(int)" class="member-name-link">getCard(int)</a> - Method in class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Hand.html" title="class in ru.nsu.bogomolov.model">Hand</a></dt>
+<dd>
+<div class="block">Возвращает карту по её позиции в руке.</div>
 </dd>
 <dt><a href="ru/nsu/bogomolov/model/Hand.html#getCards()" class="member-name-link">getCards()</a> - Method in class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Hand.html" title="class in ru.nsu.bogomolov.model">Hand</a></dt>
 <dd>
@@ -208,6 +234,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Определяет количество тузов со значением 1.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/model/Hand.html#getReducedAcesCount(int)" class="member-name-link">getReducedAcesCount(int)</a> - Method in class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Hand.html" title="class in ru.nsu.bogomolov.model">Hand</a></dt>
+<dd>
+<div class="block">Определяет количество уменьшенных тузов среди первых карт руки.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/game/GameScore.html#getRoundNumber()" class="member-name-link">getRoundNumber()</a> - Method in class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/GameScore.html" title="class in ru.nsu.bogomolov.game">GameScore</a></dt>
 <dd>
 <div class="block">Возвращает количество сыгранных раундов.</div>
@@ -227,8 +257,6 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:H">H</h2>
 <dl class="index">
-<dt><a href="ru/nsu/bogomolov/model/Participant.html#hand" class="member-name-link">hand</a> - Variable in class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Participant.html" title="class in ru.nsu.bogomolov.model">Participant</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="ru/nsu/bogomolov/model/Hand.html" class="type-name-link" title="class in ru.nsu.bogomolov.model">Hand</a> - Class in <a href="ru/nsu/bogomolov/model/package-summary.html">ru.nsu.bogomolov.model</a></dt>
 <dd>
 <div class="block">Карты, собранные одним участником текущего раунда.</div>
@@ -305,6 +333,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создаёт игрока.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/game/RoundResult.html#PLAYER_WIN" class="member-name-link">PLAYER_WIN</a> - Enum constant in enum class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/RoundResult.html" title="enum class in ru.nsu.bogomolov.game">RoundResult</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="ru/nsu/bogomolov/game/GameScore.html#playerWon()" class="member-name-link">playerWon()</a> - Method in class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/GameScore.html" title="class in ru.nsu.bogomolov.game">GameScore</a></dt>
 <dd>
 <div class="block">Учитывает победу игрока.</div>
@@ -345,6 +375,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Очищает руку перед началом нового раунда.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/game/RoundResult.html" class="type-name-link" title="enum class in ru.nsu.bogomolov.game">RoundResult</a> - Enum Class in <a href="ru/nsu/bogomolov/game/package-summary.html">ru.nsu.bogomolov.game</a></dt>
+<dd>
+<div class="block">Результат сравнения очков игрока и дилера.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/package-summary.html">ru.nsu.bogomolov</a> - package ru.nsu.bogomolov</dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/bogomolov/game/package-summary.html">ru.nsu.bogomolov.game</a> - package ru.nsu.bogomolov.game</dt>
@@ -368,6 +402,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/bogomolov/model/Nominal.html#SIX" class="member-name-link">SIX</a> - Enum constant in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Nominal.html" title="enum class in ru.nsu.bogomolov.model">Nominal</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="ru/nsu/bogomolov/model/Hand.html#size()" class="member-name-link">size()</a> - Method in class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Hand.html" title="class in ru.nsu.bogomolov.model">Hand</a></dt>
+<dd>
+<div class="block">Возвращает количество карт в руке.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/model/Suit.html#SPADES" class="member-name-link">SPADES</a> - Enum constant in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Suit.html" title="enum class in ru.nsu.bogomolov.model">Suit</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/bogomolov/game/BlackjackGame.html#start()" class="member-name-link">start()</a> - Method in class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/BlackjackGame.html" title="class in ru.nsu.bogomolov.game">BlackjackGame</a></dt>
@@ -389,10 +427,6 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/bogomolov/model/Nominal.html#THREE" class="member-name-link">THREE</a> - Enum constant in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Nominal.html" title="enum class in ru.nsu.bogomolov.model">Nominal</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="ru/nsu/bogomolov/model/Hand.html#toDisplayString(boolean)" class="member-name-link">toDisplayString(boolean)</a> - Method in class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Hand.html" title="class in ru.nsu.bogomolov.model">Hand</a></dt>
-<dd>
-<div class="block">Формирует строку для вывода руки в консоль.</div>
-</dd>
 <dt><a href="ru/nsu/bogomolov/game/GameScore.html#toString()" class="member-name-link">toString()</a> - Method in class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/GameScore.html" title="class in ru.nsu.bogomolov.game">GameScore</a></dt>
 <dd>
 <div class="block">Возвращает счёт в текстовом формате.</div>
@@ -406,6 +440,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">
+<dt><a href="ru/nsu/bogomolov/game/RoundResult.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/RoundResult.html" title="enum class in ru.nsu.bogomolov.game">RoundResult</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/model/Nominal.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Nominal.html" title="enum class in ru.nsu.bogomolov.model">Nominal</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
@@ -413,6 +451,11 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/bogomolov/model/Suit.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Suit.html" title="enum class in ru.nsu.bogomolov.model">Suit</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/game/RoundResult.html#values()" class="member-name-link">values()</a> - Static method in enum class ru.nsu.bogomolov.game.<a href="ru/nsu/bogomolov/game/RoundResult.html" title="enum class in ru.nsu.bogomolov.game">RoundResult</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum class, in
+the order they are declared.</div>
 </dd>
 <dt><a href="ru/nsu/bogomolov/model/Nominal.html#values()" class="member-name-link">values()</a> - Static method in enum class ru.nsu.bogomolov.model.<a href="ru/nsu/bogomolov/model/Nominal.html" title="enum class in ru.nsu.bogomolov.model">Nominal</a></dt>
 <dd>

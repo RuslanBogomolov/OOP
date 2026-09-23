@@ -103,12 +103,14 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color">
 <div class="block">Создаёт игру с заданными зависимостями.</div>
 </div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.bogomolov.model.Player,ru.nsu.bogomolov.model.Dealer,ru.nsu.bogomolov.ui.ConsoleInterface,ru.nsu.bogomolov.game.GameScore)" class="member-name-link">BlackjackGame</a><wbr>(<a href="../model/Player.html" title="class in ru.nsu.bogomolov.model">Player</a>&nbsp;player,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.bogomolov.model.Deck,ru.nsu.bogomolov.model.Player,ru.nsu.bogomolov.model.Dealer,ru.nsu.bogomolov.ui.ConsoleInterface,ru.nsu.bogomolov.game.GameScore,ru.nsu.bogomolov.game.BlackjackRules)" class="member-name-link">BlackjackGame</a><wbr>(<a href="../model/Deck.html" title="class in ru.nsu.bogomolov.model">Deck</a>&nbsp;deck,
+ <a href="../model/Player.html" title="class in ru.nsu.bogomolov.model">Player</a>&nbsp;player,
  <a href="../model/Dealer.html" title="class in ru.nsu.bogomolov.model">Dealer</a>&nbsp;dealer,
  <a href="../ui/ConsoleInterface.html" title="class in ru.nsu.bogomolov.ui">ConsoleInterface</a>&nbsp;console,
- <a href="GameScore.html" title="class in ru.nsu.bogomolov.game">GameScore</a>&nbsp;gameScore)</code></div>
+ <a href="GameScore.html" title="class in ru.nsu.bogomolov.game">GameScore</a>&nbsp;gameScore,
+ <a href="BlackjackRules.html" title="class in ru.nsu.bogomolov.game">BlackjackRules</a>&nbsp;rules)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Создаёт игру с новой одноколодной колодой.</div>
+<div class="block">Создаёт игру с заданными зависимостями.</div>
 </div>
 </div>
 </section>
@@ -173,19 +175,23 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(ru.nsu.bogomolov.model.Player,ru.nsu.bogomolov.model.Dealer,ru.nsu.bogomolov.ui.ConsoleInterface,ru.nsu.bogomolov.game.GameScore)">
+<section class="detail" id="&lt;init&gt;(ru.nsu.bogomolov.model.Deck,ru.nsu.bogomolov.model.Player,ru.nsu.bogomolov.model.Dealer,ru.nsu.bogomolov.ui.ConsoleInterface,ru.nsu.bogomolov.game.GameScore,ru.nsu.bogomolov.game.BlackjackRules)">
 <h3>BlackjackGame</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">BlackjackGame</span><wbr><span class="parameters">(<a href="../model/Player.html" title="class in ru.nsu.bogomolov.model">Player</a>&nbsp;player,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">BlackjackGame</span><wbr><span class="parameters">(<a href="../model/Deck.html" title="class in ru.nsu.bogomolov.model">Deck</a>&nbsp;deck,
+ <a href="../model/Player.html" title="class in ru.nsu.bogomolov.model">Player</a>&nbsp;player,
  <a href="../model/Dealer.html" title="class in ru.nsu.bogomolov.model">Dealer</a>&nbsp;dealer,
  <a href="../ui/ConsoleInterface.html" title="class in ru.nsu.bogomolov.ui">ConsoleInterface</a>&nbsp;console,
- <a href="GameScore.html" title="class in ru.nsu.bogomolov.game">GameScore</a>&nbsp;gameScore)</span></div>
-<div class="block">Создаёт игру с новой одноколодной колодой.</div>
+ <a href="GameScore.html" title="class in ru.nsu.bogomolov.game">GameScore</a>&nbsp;gameScore,
+ <a href="BlackjackRules.html" title="class in ru.nsu.bogomolov.game">BlackjackRules</a>&nbsp;rules)</span></div>
+<div class="block">Создаёт игру с заданными зависимостями.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
+<dd><code>deck</code> - колода</dd>
 <dd><code>player</code> - игрок</dd>
 <dd><code>dealer</code> - дилер</dd>
 <dd><code>console</code> - консольный интерфейс</dd>
 <dd><code>gameScore</code> - счёт игры</dd>
+<dd><code>rules</code> - правила игры</dd>
 </dl>
 </section>
 </li>
