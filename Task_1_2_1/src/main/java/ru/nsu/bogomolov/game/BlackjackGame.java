@@ -17,6 +17,7 @@ public class BlackjackGame {
     private final Dealer dealer;
     private final ConsoleInterface console;
     private final GameScore gameScore;
+    private final BlackjackRules rules;
 
     /**
      * Подготавливает участников и ввод.
@@ -37,24 +38,28 @@ public class BlackjackGame {
      */
     public BlackjackGame(Deck deck, Player player, Dealer dealer,
                          ConsoleInterface console, GameScore gameScore) {
+        this(deck, player, dealer, console, gameScore, new BlackjackRules());
+    }
+
+    /**
+     * Создаёт игру с заданными зависимостями.
+     *
+     * @param deck колода
+     * @param player игрок
+     * @param dealer дилер
+     * @param console консольный интерфейс
+     * @param gameScore счёт игры
+     * @param rules правила игры
+     */
+    public BlackjackGame(Deck deck, Player player, Dealer dealer,
+                         ConsoleInterface console, GameScore gameScore,
+                         BlackjackRules rules) {
         this.deck = deck;
         this.player = player;
         this.dealer = dealer;
         this.console = console;
         this.gameScore = gameScore;
-    }
-
-    /**
-     * Создаёт игру с новой одноколодной колодой.
-     *
-     * @param player игрок
-     * @param dealer дилер
-     * @param console консольный интерфейс
-     * @param gameScore счёт игры
-     */
-    public BlackjackGame(Player player, Dealer dealer,
-                         ConsoleInterface console, GameScore gameScore) {
-        this(null, player, dealer, console, gameScore);
+        this.rules = rules;
     }
 
     /**
@@ -62,15 +67,16 @@ public class BlackjackGame {
      */
     public void start() {
         console.println("Добро пожаловать в Блэкджек!");
-        deck = new Deck(readDeckCount());
+        if (deck == null) {
+            deck = new Deck(console.readDeckCount());
+        }
 
         while (true) {
             playRound();
+            if (!console.askContinue()) {
+                return;
+            }
         }
-    }
-
-    private int readDeckCount() {
-        return console.readDeckCount();
     }
 
     private void playRound() {
@@ -129,8 +135,7 @@ public class BlackjackGame {
             if (console.askHit()) {
                 Card drawn = drawCard();
                 player.getHand().addCard(drawn);
-                console.println("Вы открыли карту " + drawn + " ("
-                        + drawn.getNominal().getBaseValue() + ")");
+                console.println("Вы открыли карту " + drawn);
                 console.printState(player, dealer, true);
 
                 if (player.isBusted()) {
@@ -153,15 +158,13 @@ public class BlackjackGame {
         console.println("-------");
 
         Card hiddenCard = dealer.getHiddenCard();
-        console.println("Дилер открывает закрытую карту " + hiddenCard
-                + " (" + hiddenCard.getNominal().getBaseValue() + ")");
+        console.println("Дилер открывает закрытую карту " + hiddenCard);
         console.printState(player, dealer, false);
 
         while (dealer.shouldHit()) {
             Card drawn = drawCard();
             dealer.getHand().addCard(drawn);
-            console.println("\nДилер открывает карту " + drawn + " ("
-                    + drawn.getNominal().getBaseValue() + ")");
+            console.println("\nДилер открывает карту " + drawn);
             console.printState(player, dealer, false);
 
             if (dealer.isBusted()) {
@@ -195,35 +198,28 @@ public class BlackjackGame {
      * Сравнивает очки и увеличивает счёт победителя.
      */
     private void determineWinner() {
-        int playerScore = player.getScore();
-        int dealerScore = dealer.getScore();
-
-        if (playerScore > dealerScore) {
-            gameScore.playerWon();
-            console.println("\nВы выиграли раунд!");
-        } else if (dealerScore > playerScore) {
-            gameScore.dealerWon();
-            console.println("\nДилер выиграл раунд!");
-        } else {
-            console.println("\nНичья в раунде!");
+        RoundResult result = rules.determineWinner(player, dealer);
+        switch (result) {
+            case PLAYER_WIN:
+                gameScore.playerWon();
+                console.println("\nВы выиграли раунд!");
+                break;
+            case DEALER_WIN:
+                gameScore.dealerWon();
+                console.println("\nДилер выиграл раунд!");
+                break;
+            case DRAW:
+                console.println("\nНичья в раунде!");
+                break;
         }
         printOverallScore();
-    }
-
-    /**
-     * Возвращает текущий счёт.
-     *
-     * @return счёт в формате «победы игрока:победы дилера»
-     */
-    private String getScoreString() {
-        return gameScore.toString();
     }
 
     /**
      * Печатает текущий счёт после завершения раунда.
      */
     private void printOverallScore() {
-        console.println("Счет " + getScoreString() + ".");
+        console.println("Счет " + gameScore + ".");
     }
 
     /**

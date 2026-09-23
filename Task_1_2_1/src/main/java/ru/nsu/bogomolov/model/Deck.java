@@ -12,11 +12,17 @@ public class Deck {
     private int deckCount;
 
     /**
-     * Создаёт и перемешивает стандартные колоды.
+     * Создаёт и перемешивает стандартные колоды. Нулевое количество
+     * разрешено для создания пустой колоды с последующим добавлением.
      *
-     * @param deckCount количество колод
+     * @param deckCount количество колод, неотрицательное
+     * @throws IllegalArgumentException если количество отрицательное
      */
     public Deck(int deckCount) {
+        if (deckCount < 0) {
+            throw new IllegalArgumentException(
+                    "Количество колод не может быть отрицательным");
+        }
         this.deckCount = deckCount;
         reset();
     }

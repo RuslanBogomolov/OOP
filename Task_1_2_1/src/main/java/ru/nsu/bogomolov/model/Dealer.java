@@ -26,6 +26,6 @@ public class Dealer extends Participant {
      * @return вторая карта дилера
      */
     public Card getHiddenCard() {
-        return getHand().getCards().get(1);
+        return getHand().getCard(1);
     }
 }

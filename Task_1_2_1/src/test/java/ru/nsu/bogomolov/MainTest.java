@@ -34,6 +34,7 @@ import ru.nsu.bogomolov.ui.ConsoleInterface;
 class MainTest {
     private static final InputStream ORIGINAL_INPUT = System.in;
     private static final PrintStream ORIGINAL_OUTPUT = System.out;
+    private final ConsoleInterface console = new ConsoleInterface();
 
     /**
      * Тесты меняют стандартные потоки.
@@ -179,7 +180,7 @@ class MainTest {
 
         assertEquals(0, hand.calculateScore());
         assertEquals(0, hand.getReducedAcesCount());
-        assertEquals("[]", hand.toDisplayString(false));
+        assertEquals("[]", console.formatHand(hand, false));
     }
 
     @Test
@@ -190,7 +191,7 @@ class MainTest {
 
         assertEquals(11, hand.calculateScore());
         assertEquals("[Семерка ♥️ (7), Четверка ♣️ (4)] > 11",
-                hand.toDisplayString(false));
+                console.formatHand(hand, false));
     }
 
     @Test
@@ -212,7 +213,7 @@ class MainTest {
 
         assertEquals(17, hand.calculateScore());
         assertEquals(0, hand.getReducedAcesCount());
-        assertTrue(hand.toDisplayString(false).contains("Туз ♥️ (11)"));
+        assertTrue(console.formatHand(hand, false).contains("Туз ♥️ (11)"));
     }
 
     @Test
@@ -224,7 +225,7 @@ class MainTest {
 
         assertEquals(15, hand.calculateScore());
         assertEquals(1, hand.getReducedAcesCount());
-        assertTrue(hand.toDisplayString(false).contains("Туз ♥️ (1)"));
+        assertTrue(console.formatHand(hand, false).contains("Туз ♥️ (1)"));
     }
 
     @Test
@@ -245,7 +246,7 @@ class MainTest {
         hand.addCard(new Card(Suit.CLUBS, Nominal.ACE));
 
         assertEquals("[Десятка ♥️ (10), <закрытая карта>]",
-                hand.toDisplayString(true));
+                console.formatHand(hand, true));
     }
 
     @Test
@@ -253,7 +254,7 @@ class MainTest {
         Hand hand = new Hand();
         hand.addCard(new Card(Suit.HEARTS, Nominal.TEN));
 
-        assertEquals("[Десятка ♥️ (10)]", hand.toDisplayString(true));
+        assertEquals("[Десятка ♥️ (10)]", console.formatHand(hand, true));
     }
 
     @Test
@@ -264,7 +265,7 @@ class MainTest {
         hand.addCard(new Card(Suit.SPADES, Nominal.FOUR));
 
         assertEquals("[Двойка ♥️ (2), <закрытая карта>]",
-                hand.toDisplayString(true));
+                console.formatHand(hand, true));
     }
 
     @Test
@@ -287,7 +288,7 @@ class MainTest {
         hand.clear();
 
         assertTrue(hand.getCards().isEmpty());
-        assertEquals("[]", hand.toDisplayString(false));
+        assertEquals("[]", console.formatHand(hand, false));
     }
 
     @Test
@@ -410,9 +411,11 @@ class MainTest {
 
     @Test
     void deckCountInputRejectsInvalidValues() throws Exception {
-        BlackjackGame game = newGame("text\n0\n3\n");
+        System.setIn(new ByteArrayInputStream("text\n0\n3\n".getBytes()));
+        System.setOut(new PrintStream(new ByteArrayOutputStream()));
+        ConsoleInterface console = new ConsoleInterface();
 
-        int deckCount = invoke(game, "readDeckCount");
+        int deckCount = console.readDeckCount();
 
         assertEquals(3, deckCount);
     }

@@ -1,7 +1,10 @@
 package ru.nsu.bogomolov.ui;
 
 import java.util.Scanner;
+import ru.nsu.bogomolov.model.Card;
 import ru.nsu.bogomolov.model.Dealer;
+import ru.nsu.bogomolov.model.Hand;
+import ru.nsu.bogomolov.model.Nominal;
 import ru.nsu.bogomolov.model.Player;
 
 /**
@@ -110,14 +113,48 @@ public class ConsoleInterface {
      * @return true, если пользователь подтвердил добавление
      */
     public boolean askAddDeck() {
-        print("\nКолода закончилась. "
-                + "Добавить новую колоду? "
-                + "Введите \"1\" для подтверждения: ");
-        if (!hasNextLine()) {
-            throw new IllegalStateException(
-                    "Ввод завершён до добавления новой колоды");
+        while (true) {
+            print("\nКолода закончилась. "
+                    + "Добавить новую колоду? "
+                    + "Введите \"1\" для подтверждения или \"0\" для отказа: ");
+            if (!hasNextLine()) {
+                throw new IllegalStateException(
+                        "Ввод завершён до добавления новой колоды");
+            }
+
+            String input = readLine().trim();
+            if ("1".equals(input)) {
+                return true;
+            }
+            if ("0".equals(input)) {
+                return false;
+            }
+            println("Неверный ввод, введите 1 или 0.");
         }
-        return "1".equals(readLine().trim());
+    }
+
+    /**
+     * Запрашивает продолжение игры после завершения раунда.
+     *
+     * @return true, если нужно начать следующий раунд
+     */
+    public boolean askContinue() {
+        while (true) {
+            print("\nСыграть ещё один раунд? "
+                    + "Введите \"1\" для продолжения или \"0\" для выхода: ");
+            if (!hasNextLine()) {
+                return false;
+            }
+
+            String input = readLine().trim();
+            if ("1".equals(input)) {
+                return true;
+            }
+            if ("0".equals(input)) {
+                return false;
+            }
+            println("Неверный ввод, введите 1 или 0.");
+        }
     }
 
     /**
@@ -129,8 +166,51 @@ public class ConsoleInterface {
      */
     public void printState(Player player, Dealer dealer, boolean hideDealerCard) {
         println("\tВаши карты: "
-                + player.getHand().toDisplayString(false));
+                + formatHand(player.getHand(), false));
         println("Карты дилера: "
-                + dealer.getHand().toDisplayString(hideDealerCard));
+                + formatHand(dealer.getHand(), hideDealerCard));
+    }
+
+    /**
+     * Форматирует руку для вывода в консоль.
+     *
+     * @param hand рука
+     * @param hideSecondCard нужно ли скрыть вторую карту
+     * @return отформатированная рука
+     */
+    public String formatHand(Hand hand, boolean hideSecondCard) {
+        if (hand.size() == 0) {
+            return "[]";
+        }
+
+        int visibleCardCount = hideSecondCard
+                ? Math.min(1, hand.size())
+                : hand.size();
+        int reducedAces = hand.getReducedAcesCount(visibleCardCount);
+        StringBuilder result = new StringBuilder("[");
+
+        for (int i = 0; i < visibleCardCount; i++) {
+            if (i > 0) {
+                result.append(", ");
+            }
+            Card card = hand.getCard(i);
+            int value = card.getNominal().getBaseValue();
+            if (card.getNominal() == Nominal.ACE) {
+                value = reducedAces > 0 ? 1 : 11;
+                if (value == 1) {
+                    reducedAces--;
+                }
+            }
+            result.append(card).append(" (").append(value).append(")");
+        }
+
+        if (hideSecondCard && hand.size() > 1) {
+            result.append(", <закрытая карта>");
+        }
+        result.append("]");
+        if (!hideSecondCard) {
+            result.append(" > ").append(hand.calculateScore());
+        }
+        return result.toString();
     }
 }

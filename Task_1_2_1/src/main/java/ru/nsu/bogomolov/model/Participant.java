@@ -5,7 +5,7 @@ package ru.nsu.bogomolov.model;
  */
 public abstract class Participant {
     private final String name;
-    protected final Hand hand = new Hand();
+    private final Hand hand = new Hand();
 
     /**
      * Создаёт участника игры.
@@ -54,12 +54,11 @@ public abstract class Participant {
 
     /**
      * Проверяет наличие блэкджека на первых двух картах.
-     * Проверяет наличие блэкджека на первых двух картах.
      *
      * @return true, если на руке ровно две карты на 21 очко
      */
     public boolean hasBlackjack() {
-        return hand.getCards().size() == 2 && getScore() == 21;
+        return hand.size() == 2 && getScore() == 21;
     }
 
     /**

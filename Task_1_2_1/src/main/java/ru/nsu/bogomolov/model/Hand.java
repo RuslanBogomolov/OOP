@@ -31,7 +31,26 @@ public class Hand {
      * @return список карт в порядке их получения
      */
     public List<Card> getCards() {
-        return cards;
+        return List.copyOf(cards);
+    }
+
+    /**
+     * Возвращает количество карт в руке.
+     *
+     * @return количество карт
+     */
+    public int size() {
+        return cards.size();
+    }
+
+    /**
+     * Возвращает карту по её позиции в руке.
+     *
+     * @param index индекс карты
+     * @return карта в указанной позиции
+     */
+    public Card getCard(int index) {
+        return cards.get(index);
     }
 
     /**
@@ -64,10 +83,26 @@ public class Hand {
      * @return количество тузов со значением 1
      */
     public int getReducedAcesCount() {
+        return getReducedAcesCount(cards.size());
+    }
+
+    /**
+     * Определяет количество уменьшенных тузов среди первых карт руки.
+     *
+     * @param cardCount количество учитываемых карт
+     * @return количество тузов со значением 1
+     */
+    public int getReducedAcesCount(int cardCount) {
+        if (cardCount < 0 || cardCount > cards.size()) {
+            throw new IllegalArgumentException(
+                    "Количество карт должно быть от 0 до размера руки");
+        }
+
         int total = 0;
         int aceCount = 0;
 
-        for (Card card : cards) {
+        for (int i = 0; i < cardCount; i++) {
+            Card card = cards.get(i);
             total += card.getNominal().getBaseValue();
             if (card.getNominal() == Nominal.ACE) {
                 aceCount++;
@@ -83,51 +118,4 @@ public class Hand {
         return reducedAces;
     }
 
-    /**
-     * Формирует строку для вывода руки в консоль.
-     *
-     * @param hideSecondCard нужно ли скрыть вторую карту
-     * @return карты и сумму, если карты открыты
-     */
-    public String toDisplayString(boolean hideSecondCard) {
-        if (cards.isEmpty()) {
-            return "[]";
-        }
-
-        StringBuilder sb = new StringBuilder("[");
-        int reducedAcesToApply = getReducedAcesCount();
-
-        for (int i = 0; i < cards.size(); i++) {
-            if (i == 1 && hideSecondCard) {
-                sb.append(", ");
-                sb.append("<закрытая карта>");
-                break;
-            }
-
-            Card card = cards.get(i);
-            int value = card.getNominal().getBaseValue();
-
-            if (card.getNominal() == Nominal.ACE) {
-                if (reducedAcesToApply > 0) {
-                    value = 1;
-                    reducedAcesToApply--;
-                } else {
-                    value = 11;
-                }
-            }
-
-            sb.append(card).append(" (").append(value).append(")");
-
-            if (i < cards.size() - 1 && !(i == 0 && hideSecondCard)) {
-                sb.append(", ");
-            }
-        }
-        sb.append("]");
-
-        if (!hideSecondCard) {
-            sb.append(" > ").append(calculateScore());
-        }
-
-        return sb.toString();
-    }
 }
