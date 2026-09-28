@@ -240,5 +240,4 @@ public class BlackjackGame {
         }
         return deck.drawCard();
     }
-
 }
