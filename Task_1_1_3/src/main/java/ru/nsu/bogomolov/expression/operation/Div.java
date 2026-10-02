@@ -57,8 +57,8 @@ public final class Div extends BinaryExpression {
      * Упрощает выражение без изменения исходного дерева.
      *
      * @return результат упрощения
-     * @throws ArithmeticException при недопустимой арифметической операции в подвыражении или
-     * переполнении показателя
+     * @throws ArithmeticException при недопустимой арифметической операции в подвыражении
+     *     или переполнении показателя
      */
     @Override
     public Expression simplify() {

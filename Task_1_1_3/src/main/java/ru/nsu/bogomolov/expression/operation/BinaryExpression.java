@@ -2,7 +2,6 @@ package ru.nsu.bogomolov.expression.operation;
 
 import java.util.Map;
 import java.util.Objects;
-
 import ru.nsu.bogomolov.expression.Expression;
 
 /**

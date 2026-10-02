@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import ru.nsu.bogomolov.expression.Expression;
 import ru.nsu.bogomolov.expression.Number;
 

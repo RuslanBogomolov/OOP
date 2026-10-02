@@ -2,7 +2,6 @@ package ru.nsu.bogomolov.expression.operation;
 
 import java.util.Map;
 import java.util.Objects;
-
 import ru.nsu.bogomolov.expression.Expression;
 import ru.nsu.bogomolov.expression.Number;
 
@@ -80,8 +79,8 @@ public final class Pow extends Expression {
      * Упрощает выражение без изменения исходного дерева.
      *
      * @return результат упрощения
-     * @throws ArithmeticException при недопустимой арифметической операции в подвыражении или
-     * переполнении показателя
+     * @throws ArithmeticException при недопустимой арифметической операции в подвыражении
+     *     или переполнении показателя
      */
     @Override
     public Expression simplify() {

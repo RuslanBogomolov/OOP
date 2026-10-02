@@ -33,7 +33,7 @@ public final class ExpressionParser {
      * @param text исходная строка
      * @return дерево выражения
      * @throws IllegalArgumentException если строка содержит синтаксическую ошибку или число вне
-     * диапазона int
+     *     диапазона int
      */
     public static Expression parse(String text) {
         ExpressionParser parser = new ExpressionParser(text);

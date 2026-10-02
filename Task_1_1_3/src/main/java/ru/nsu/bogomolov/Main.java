@@ -5,7 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
-
 import ru.nsu.bogomolov.expression.Expression;
 import ru.nsu.bogomolov.parser.ExpressionParser;
 
@@ -47,7 +46,8 @@ public final class Main {
         System.out.println("Упрощенная производная: " + derivative.simplify());
 
         while (true) {
-            System.out.println("Задайте значения переменных (регистр важен), например x = 1; y = 2 или X = 2:");
+            System.out.println("Задайте значения переменных (регистр важен), например x = 1; "
+                    + "y = 2 или X = 2:");
             if (!scanner.hasNextLine()) {
                 return;
             }
