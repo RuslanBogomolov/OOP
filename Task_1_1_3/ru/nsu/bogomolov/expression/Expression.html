@@ -109,6 +109,17 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#collectFactors(ru.nsu.bogomolov.expression.operation.Simplifier.Product)" class="member-name-link">collectFactors</a><wbr>(<a href="operation/Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a>&nbsp;product)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Добавляет выражение в накопитель множителей как неделимый множитель.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#collectTerms(boolean,ru.nsu.bogomolov.expression.operation.Simplifier.Sum)" class="member-name-link">collectTerms</a><wbr>(boolean&nbsp;negative,
+ <a href="operation/Simplifier.Sum.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Sum</a>&nbsp;sum)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Добавляет выражение в накопитель слагаемых как один неделимый член.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract <a href="Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#derivative(java.lang.String)" class="member-name-link">derivative</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;variable)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
@@ -204,6 +215,30 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>результат упрощения</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="collectFactors(ru.nsu.bogomolov.expression.operation.Simplifier.Product)">
+<h3>collectFactors</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">collectFactors</span><wbr><span class="parameters">(<a href="operation/Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a>&nbsp;product)</span></div>
+<div class="block">Добавляет выражение в накопитель множителей как неделимый множитель.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>product</code> - накопитель множителей</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="collectTerms(boolean,ru.nsu.bogomolov.expression.operation.Simplifier.Sum)">
+<h3>collectTerms</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">collectTerms</span><wbr><span class="parameters">(boolean&nbsp;negative,
+ <a href="operation/Simplifier.Sum.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Sum</a>&nbsp;sum)</span></div>
+<div class="block">Добавляет выражение в накопитель слагаемых как один неделимый член.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>negative</code> - true, если слагаемое находится под отрицательным знаком</dd>
+<dd><code>sum</code> - накопитель слагаемых</dd>
 </dl>
 </section>
 </li>

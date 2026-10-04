@@ -49,7 +49,7 @@ loadScripts(document, 'script');</script>
 <div class="header">
 <h1>Index</h1>
 </div>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a>
 <h2 class="title" id="I:A">A</h2>
 <dl class="index">
 <dt><a href="ru/nsu/bogomolov/expression/operation/Add.html" class="type-name-link" title="class in ru.nsu.bogomolov.expression.operation">Add</a> - Class in <a href="ru/nsu/bogomolov/expression/operation/package-summary.html">ru.nsu.bogomolov.expression.operation</a></dt>
@@ -59,6 +59,18 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/bogomolov/expression/operation/Add.html#%3Cinit%3E(ru.nsu.bogomolov.expression.Expression,ru.nsu.bogomolov.expression.Expression)" class="member-name-link">Add(Expression, Expression)</a> - Constructor for class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Add.html" title="class in ru.nsu.bogomolov.expression.operation">Add</a></dt>
 <dd>
 <div class="block">Создает операцию с двумя операндами.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Sum.html#addConstant(int)" class="member-name-link">addConstant(int)</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Sum.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Sum</a></dt>
+<dd>
+<div class="block">Добавляет свободный числовой коэффициент.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html#addFactor(ru.nsu.bogomolov.expression.Expression,int)" class="member-name-link">addFactor(Expression, int)</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a></dt>
+<dd>
+<div class="block">Добавляет множитель с заданной степенью.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Sum.html#addTerm(ru.nsu.bogomolov.expression.Expression,int)" class="member-name-link">addTerm(Expression, int)</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Sum.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Sum</a></dt>
+<dd>
+<div class="block">Добавляет слагаемое с указанным коэффициентом.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:B">B</h2>
@@ -93,6 +105,38 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/bogomolov/expression/operation/Sub.html#calculate(int,int)" class="member-name-link">calculate(int, int)</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Sub.html" title="class in ru.nsu.bogomolov.expression.operation">Sub</a></dt>
 <dd>
 <div class="block">Выполняет арифметическую операцию над значениями операндов.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html#coefficient()" class="member-name-link">coefficient()</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a></dt>
+<dd>
+<div class="block">Возвращает накопленный коэффициент.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/Expression.html#collectFactors(ru.nsu.bogomolov.expression.operation.Simplifier.Product)" class="member-name-link">collectFactors(Simplifier.Product)</a> - Method in class ru.nsu.bogomolov.expression.<a href="ru/nsu/bogomolov/expression/Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></dt>
+<dd>
+<div class="block">Добавляет выражение в накопитель множителей как неделимый множитель.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/Number.html#collectFactors(ru.nsu.bogomolov.expression.operation.Simplifier.Product)" class="member-name-link">collectFactors(Simplifier.Product)</a> - Method in class ru.nsu.bogomolov.expression.<a href="ru/nsu/bogomolov/expression/Number.html" title="class in ru.nsu.bogomolov.expression">Number</a></dt>
+<dd>
+<div class="block">Передает значение константы в числовой коэффициент произведения.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Mul.html#collectFactors(ru.nsu.bogomolov.expression.operation.Simplifier.Product)" class="member-name-link">collectFactors(Simplifier.Product)</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Mul.html" title="class in ru.nsu.bogomolov.expression.operation">Mul</a></dt>
+<dd>
+<div class="block">Передает оба множителя накопителю произведения.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Pow.html#collectFactors(ru.nsu.bogomolov.expression.operation.Simplifier.Product)" class="member-name-link">collectFactors(Simplifier.Product)</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Pow.html" title="class in ru.nsu.bogomolov.expression.operation">Pow</a></dt>
+<dd>
+<div class="block">Передает основание степени как множитель с заданным показателем.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/Expression.html#collectTerms(boolean,ru.nsu.bogomolov.expression.operation.Simplifier.Sum)" class="member-name-link">collectTerms(boolean, Simplifier.Sum)</a> - Method in class ru.nsu.bogomolov.expression.<a href="ru/nsu/bogomolov/expression/Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></dt>
+<dd>
+<div class="block">Добавляет выражение в накопитель слагаемых как один неделимый член.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Add.html#collectTerms(boolean,ru.nsu.bogomolov.expression.operation.Simplifier.Sum)" class="member-name-link">collectTerms(boolean, Simplifier.Sum)</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Add.html" title="class in ru.nsu.bogomolov.expression.operation">Add</a></dt>
+<dd>
+<div class="block">Передает оба слагаемых накопителю с одинаковым знаком.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Sub.html#collectTerms(boolean,ru.nsu.bogomolov.expression.operation.Simplifier.Sum)" class="member-name-link">collectTerms(boolean, Simplifier.Sum)</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Sub.html" title="class in ru.nsu.bogomolov.expression.operation">Sub</a></dt>
+<dd>
+<div class="block">Передает левое и правое слагаемые с противоположными знаками.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
@@ -191,6 +235,13 @@ loadScripts(document, 'script');</script>
 <div class="block">Разбирает выражения со скобками, приоритетами операций и многобуквенными именами.</div>
 </dd>
 </dl>
+<h2 class="title" id="I:F">F</h2>
+<dl class="index">
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html#factorsExpression()" class="member-name-link">factorsExpression()</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a></dt>
+<dd>
+<div class="block">Строит выражение из множителей без числового коэффициента.</div>
+</dd>
+</dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
 <dt><a href="ru/nsu/bogomolov/expression/Number.html#getValue()" class="member-name-link">getValue()</a> - Method in class ru.nsu.bogomolov.expression.<a href="ru/nsu/bogomolov/expression/Number.html" title="class in ru.nsu.bogomolov.expression">Number</a></dt>
@@ -215,6 +266,13 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/bogomolov/expression/Variable.html#hashCode()" class="member-name-link">hashCode()</a> - Method in class ru.nsu.bogomolov.expression.<a href="ru/nsu/bogomolov/expression/Variable.html" title="class in ru.nsu.bogomolov.expression">Variable</a></dt>
 <dd>
 <div class="block">Вычисляет хеш-код, согласованный со сравнением выражений.</div>
+</dd>
+</dl>
+<h2 class="title" id="I:I">I</h2>
+<dl class="index">
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html#isConstant()" class="member-name-link">isConstant()</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a></dt>
+<dd>
+<div class="block">Проверяет, содержит ли произведение только числовой коэффициент.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:L">L</h2>
@@ -243,6 +301,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/bogomolov/expression/operation/Mul.html#%3Cinit%3E(ru.nsu.bogomolov.expression.Expression,ru.nsu.bogomolov.expression.Expression)" class="member-name-link">Mul(Expression, Expression)</a> - Constructor for class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Mul.html" title="class in ru.nsu.bogomolov.expression.operation">Mul</a></dt>
 <dd>
 <div class="block">Создает операцию с двумя операндами.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html#multiplyCoefficient(int)" class="member-name-link">multiplyCoefficient(int)</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a></dt>
+<dd>
+<div class="block">Умножает общий коэффициент на указанное значение.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:N">N</h2>
@@ -274,6 +336,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Печатает выражение в стандартный поток вывода.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html#%3Cinit%3E()" class="member-name-link">Product()</a> - Constructor for class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
@@ -292,6 +356,20 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.html" class="type-name-link" title="class in ru.nsu.bogomolov.expression.operation">Simplifier</a> - Class in <a href="ru/nsu/bogomolov/expression/operation/package-summary.html">ru.nsu.bogomolov.expression.operation</a></dt>
+<dd>
+<div class="block">Объединяет одинаковые слагаемые и множители при упрощении выражений.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.html#%3Cinit%3E()" class="member-name-link">Simplifier()</a> - Constructor for class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html" class="type-name-link" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a> - Class in <a href="ru/nsu/bogomolov/expression/operation/package-summary.html">ru.nsu.bogomolov.expression.operation</a></dt>
+<dd>
+<div class="block">Накопитель числового коэффициента и множителей произведения.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Sum.html" class="type-name-link" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Sum</a> - Class in <a href="ru/nsu/bogomolov/expression/operation/package-summary.html">ru.nsu.bogomolov.expression.operation</a></dt>
+<dd>
+<div class="block">Накопитель коэффициентов одинаковых слагаемых.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/expression/Expression.html#simplify()" class="member-name-link">simplify()</a> - Method in class ru.nsu.bogomolov.expression.<a href="ru/nsu/bogomolov/expression/Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></dt>
 <dd>
 <div class="block">Упрощает выражение без изменения исходного дерева.</div>
@@ -332,6 +410,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создает операцию с двумя операндами.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Sum.html#%3Cinit%3E()" class="member-name-link">Sum()</a> - Constructor for class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Sum.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Sum</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="ru/nsu/bogomolov/expression/operation/Add.html#symbol()" class="member-name-link">symbol()</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Add.html" title="class in ru.nsu.bogomolov.expression.operation">Add</a></dt>
 <dd>
 <div class="block">Возвращает символ математической операции.</div>
@@ -355,6 +435,14 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html#toExpression()" class="member-name-link">toExpression()</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a></dt>
+<dd>
+<div class="block">Строит произведение с учетом накопленного коэффициента.</div>
+</dd>
+<dt><a href="ru/nsu/bogomolov/expression/operation/Simplifier.Sum.html#toExpression()" class="member-name-link">toExpression()</a> - Method in class ru.nsu.bogomolov.expression.operation.<a href="ru/nsu/bogomolov/expression/operation/Simplifier.Sum.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Sum</a></dt>
+<dd>
+<div class="block">Строит сумму из накопленных слагаемых.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/expression/Expression.html#toString()" class="member-name-link">toString()</a> - Method in class ru.nsu.bogomolov.expression.<a href="ru/nsu/bogomolov/expression/Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></dt>
 <dd>
 <div class="block">Возвращает запись выражения со скобками вокруг операций.</div>
@@ -378,6 +466,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">
+<dt><a href="ru/nsu/bogomolov/expression/VariableNames.html#validate(java.lang.String)" class="member-name-link">validate(String)</a> - Static method in class ru.nsu.bogomolov.expression.<a href="ru/nsu/bogomolov/expression/VariableNames.html" title="class in ru.nsu.bogomolov.expression">VariableNames</a></dt>
+<dd>
+<div class="block">Проверяет имя переменной.</div>
+</dd>
 <dt><a href="ru/nsu/bogomolov/expression/Variable.html" class="type-name-link" title="class in ru.nsu.bogomolov.expression">Variable</a> - Class in <a href="ru/nsu/bogomolov/expression/package-summary.html">ru.nsu.bogomolov.expression</a></dt>
 <dd>
 <div class="block">Переменная с именем, значение которой задается при вычислении.</div>
@@ -386,8 +478,12 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Создает переменную с указанным именем.</div>
 </dd>
+<dt><a href="ru/nsu/bogomolov/expression/VariableNames.html" class="type-name-link" title="class in ru.nsu.bogomolov.expression">VariableNames</a> - Class in <a href="ru/nsu/bogomolov/expression/package-summary.html">ru.nsu.bogomolov.expression</a></dt>
+<dd>
+<div class="block">Проверяет допустимость имен переменных.</div>
+</dd>
 </dl>
-<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
+<a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a></main>
 </div>
 </div>
 </body>

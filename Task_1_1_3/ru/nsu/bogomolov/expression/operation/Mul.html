@@ -127,19 +127,24 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Выполняет арифметическую операцию над значениями операндов.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#derivative(java.lang.String)" class="member-name-link">derivative</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;variable)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#collectFactors(ru.nsu.bogomolov.expression.operation.Simplifier.Product)" class="member-name-link">collectFactors</a><wbr>(<a href="Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a>&nbsp;product)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Применяет правило производной произведения: u' * v + u * v'.</div>
+<div class="block">Передает оба множителя накопителю произведения.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#simplify()" class="member-name-link">simplify</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#derivative(java.lang.String)" class="member-name-link">derivative</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;variable)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Применяет правило производной произведения: u' * v + u * v'.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#simplify()" class="member-name-link">simplify</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Упрощает выражение без изменения исходного дерева.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected char</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#symbol()" class="member-name-link">symbol</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected char</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#symbol()" class="member-name-link">symbol</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Возвращает символ математической операции.</div>
 </div>
 </div>
@@ -150,7 +155,7 @@ loadScripts(document, 'script');</script>
 <code><a href="BinaryExpression.html#equals(java.lang.Object)">equals</a>, <a href="BinaryExpression.html#evaluate(java.util.Map)">evaluate</a>, <a href="BinaryExpression.html#hashCode()">hashCode</a>, <a href="BinaryExpression.html#toString()">toString</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-ru.nsu.bogomolov.expression.Expression">Methods inherited from class&nbsp;ru.nsu.bogomolov.expression.<a href="../Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></h3>
-<code><a href="../Expression.html#eval(java.lang.String)">eval</a>, <a href="../Expression.html#print()">print</a></code></div>
+<code><a href="../Expression.html#collectTerms(boolean,ru.nsu.bogomolov.expression.operation.Simplifier.Sum)">collectTerms</a>, <a href="../Expression.html#eval(java.lang.String)">eval</a>, <a href="../Expression.html#print()">print</a></code></div>
 <div class="inherited-list">
 <h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
@@ -243,6 +248,19 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="../Expression.html#simplify()">simplify</a></code>&nbsp;in class&nbsp;<code><a href="../Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></code></dd>
 <dt>Returns:</dt>
 <dd>результат упрощения</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="collectFactors(ru.nsu.bogomolov.expression.operation.Simplifier.Product)">
+<h3>collectFactors</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">collectFactors</span><wbr><span class="parameters">(<a href="Simplifier.Product.html" title="class in ru.nsu.bogomolov.expression.operation">Simplifier.Product</a>&nbsp;product)</span></div>
+<div class="block">Передает оба множителя накопителю произведения.</div>
+<dl class="notes">
+<dt>Overrides:</dt>
+<dd><code><a href="../Expression.html#collectFactors(ru.nsu.bogomolov.expression.operation.Simplifier.Product)">collectFactors</a></code>&nbsp;in class&nbsp;<code><a href="../Expression.html" title="class in ru.nsu.bogomolov.expression">Expression</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>product</code> - накопитель множителей</dd>
 </dl>
 </section>
 </li>
