@@ -1,6 +1,7 @@
 package ru.nsu.bogomolov.expression;
 
 import java.util.Map;
+import ru.nsu.bogomolov.expression.operation.Simplifier;
 
 /**
  * Целочисленная константа.
@@ -57,6 +58,16 @@ public final class Number extends Expression {
     @Override
     public Expression simplify() {
         return new Number(value);
+    }
+
+    /**
+     * Передает значение константы в числовой коэффициент произведения.
+     *
+     * @param product накопитель множителей
+     */
+    @Override
+    public void collectFactors(Simplifier.Product product) {
+        product.multiplyCoefficient(value);
     }
 
     /**

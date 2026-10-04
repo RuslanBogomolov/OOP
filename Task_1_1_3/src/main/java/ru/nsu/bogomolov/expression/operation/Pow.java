@@ -102,6 +102,16 @@ public final class Pow extends Expression {
     }
 
     /**
+     * Передает основание степени как множитель с заданным показателем.
+     *
+     * @param product накопитель множителей
+     */
+    @Override
+    public void collectFactors(Simplifier.Product product) {
+        product.addFactor(base, exponent);
+    }
+
+    /**
      * Возвращает запись выражения со скобками вокруг операций.
      *
      * @return строковое представление выражения

@@ -2,7 +2,6 @@ package ru.nsu.bogomolov;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
@@ -97,6 +96,45 @@ class MainTest {
     }
 
     /**
+     * Проверяет повторный запрос после ввода значения переменной нечислового формата.
+     *
+     * @throws IOException если операция ввода или вывода завершилась ошибкой
+     */
+    @Test
+    void retriesNonNumericAssignment() throws IOException {
+        String output = runMain("x\nx\nx=abc\nx=2\n");
+        assertTrue(output.contains("Значение переменной должно быть целым числом "
+                + "в диапазоне int. Повторите ввод."));
+        assertTrue(output.contains("Значение: 2"));
+    }
+
+    /**
+     * Проверяет обработку некорректного выражения, прочитанного из файла.
+     *
+     * @throws IOException если операция ввода или вывода завершилась ошибкой
+     */
+    @Test
+    void reportsInvalidExpressionFromFile() throws IOException {
+        Path input = directory.resolve("invalid.txt");
+        Files.writeString(input, "1+", StandardCharsets.UTF_8);
+        String output = runMain("", input.toString());
+        assertTrue(output.contains("Ошибка в выражении:"));
+    }
+
+    /**
+     * Проверяет обработку деления на ноль при упрощении выражения из файла.
+     *
+     * @throws IOException если операция ввода или вывода завершилась ошибкой
+     */
+    @Test
+    void reportsArithmeticErrorFromFileExpression() throws IOException {
+        Path input = directory.resolve("zero-denominator.txt");
+        Files.writeString(input, "1/0", StandardCharsets.UTF_8);
+        String output = runMain("", input.toString());
+        assertTrue(output.contains("Ошибка при обработке выражения: Деление на ноль"));
+    }
+
+    /**
      * Проверяет завершение при окончании входного потока.
      *
      * @throws IOException если операция ввода или вывода завершилась ошибкой
@@ -136,9 +174,10 @@ class MainTest {
 
     /** Проверяет сообщение об отсутствующем входном файле. */
     @Test
-    void reportsMissingInputFile() {
+    void reportsMissingInputFile() throws IOException {
         Path input = directory.resolve("missing.txt");
-        assertThrows(IOException.class, () -> runMain("", input.toString()));
+        String output = runMain("", input.toString());
+        assertTrue(output.contains("Ошибка чтения или записи файла:"));
     }
 
     /**

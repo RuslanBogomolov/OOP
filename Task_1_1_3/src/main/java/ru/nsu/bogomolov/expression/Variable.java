@@ -16,9 +16,7 @@ public final class Variable extends Expression {
      * @throws IllegalArgumentException если имя отсутствует или имеет неверный формат
      */
     public Variable(String name) {
-        if (name == null || !name.matches("[\\p{L}_][\\p{L}\\p{N}_]*")) {
-            throw new IllegalArgumentException("Неверное имя переменной: " + name);
-        }
+        VariableNames.validate(name);
         this.name = name;
     }
 

@@ -58,6 +58,20 @@ public final class Mul extends BinaryExpression {
      */
     @Override
     public Expression simplify() {
-        return Simplifier.product(left.simplify(), right.simplify());
+        Simplifier.Product product = new Simplifier.Product();
+        left.simplify().collectFactors(product);
+        right.simplify().collectFactors(product);
+        return product.toExpression();
+    }
+
+    /**
+     * Передает оба множителя накопителю произведения.
+     *
+     * @param product накопитель множителей
+     */
+    @Override
+    public void collectFactors(Simplifier.Product product) {
+        left.collectFactors(product);
+        right.collectFactors(product);
     }
 }

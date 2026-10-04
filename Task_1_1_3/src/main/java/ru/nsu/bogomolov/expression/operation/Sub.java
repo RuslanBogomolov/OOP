@@ -57,6 +57,21 @@ public final class Sub extends BinaryExpression {
      */
     @Override
     public Expression simplify() {
-        return Simplifier.sum(left.simplify(), right.simplify(), true);
+        Simplifier.Sum sum = new Simplifier.Sum();
+        left.simplify().collectTerms(false, sum);
+        right.simplify().collectTerms(true, sum);
+        return sum.toExpression();
+    }
+
+    /**
+     * Передает левое и правое слагаемые с противоположными знаками.
+     *
+     * @param negative true, если разность находится под отрицательным знаком
+     * @param sum накопитель слагаемых
+     */
+    @Override
+    public void collectTerms(boolean negative, Simplifier.Sum sum) {
+        left.collectTerms(negative, sum);
+        right.collectTerms(!negative, sum);
     }
 }

@@ -11,99 +11,57 @@ import ru.nsu.bogomolov.expression.Number;
 /**
  * Объединяет одинаковые слагаемые и множители при упрощении выражений.
  */
-final class Simplifier {
-    /**
-     * Объединяет числовые коэффициенты и повторяющиеся множители.
-     *
-     * @param left упрощенный левый операнд
-     * @param right упрощенный правый операнд
-     * @return упрощенное произведение
-     */
-    static Expression product(Expression left, Expression right) {
-        Product product = new Product();
-        product.collect(left);
-        product.collect(right);
-        return product.toExpression();
-    }
-
-    /**
-     * Собирает одинаковые слагаемые и складывает их коэффициенты.
-     *
-     * @param left упрощенный левый операнд
-     * @param right упрощенный правый операнд
-     * @param subtract true для вычитания правого операнда
-     * @return упрощенная сумма или разность
-     */
-    static Expression sum(Expression left, Expression right, boolean subtract) {
-        Map<Expression, Integer> terms = new LinkedHashMap<>();
-        collectTerms(left, 1, terms);
-        collectTerms(right, subtract ? -1 : 1, terms);
-        Expression result = null;
-        for (Map.Entry<Expression, Integer> term : terms.entrySet()) {
-            int coefficient = term.getValue();
-            if (coefficient == 0) {
-                continue;
-            }
-            Expression value = product(new Number(coefficient), term.getKey());
-            result = result == null ? value : new Add(result, value);
-        }
-        return result == null ? new Number(0) : result;
-    }
-
-    /**
-     * Разбирает сумму на слагаемые и добавляет их коэффициенты в таблицу.
-     *
-     * @param expression обрабатываемое выражение
-     * @param sign знак слагаемых: 1 или -1
-     * @param terms таблица частей выражений и их коэффициентов
-     */
-    private static void collectTerms(Expression expression, int sign,
-            Map<Expression, Integer> terms) {
-        if (expression instanceof Add) {
-            Add add = (Add) expression;
-            collectTerms(add.left, sign, terms);
-            collectTerms(add.right, sign, terms);
-        } else {
-            Product term = new Product();
-            term.collect(expression);
-            Expression factors = term.factorsExpression();
-            terms.merge(factors, sign * term.coefficient, Integer::sum);
-        }
-    }
-
-    /** Числовой коэффициент и таблица повторяющихся множителей. */
-    private static final class Product {
+public final class Simplifier {
+    /** Накопитель числового коэффициента и множителей произведения. */
+    public static final class Product {
         /** Общий числовой коэффициент произведения. */
         private int coefficient = 1;
         /** Основания множителей и количество их повторений. */
         private final Map<Expression, Integer> factors = new LinkedHashMap<>();
 
         /**
-         * Добавляет число, произведение или степень к собираемым множителям.
+         * Умножает общий коэффициент на указанное значение.
          *
-         * @param expression добавляемое выражение
+         * @param value множитель коэффициента
          */
-        private void collect(Expression expression) {
-            if (expression instanceof Number) {
-                coefficient *= ((Number) expression).getValue();
-            } else if (expression instanceof Mul) {
-                Mul mul = (Mul) expression;
-                collect(mul.left);
-                collect(mul.right);
-            } else if (expression instanceof Pow) {
-                Pow pow = (Pow) expression;
-                factors.merge(pow.base, pow.exponent, Math::addExact);
-            } else {
-                factors.merge(expression, 1, Math::addExact);
-            }
+        public void multiplyCoefficient(int value) {
+            coefficient *= value;
         }
 
         /**
-         * Строит произведение множителей в едином порядке без числового коэффициента.
+         * Добавляет множитель с заданной степенью.
          *
-         * @return произведение множителей либо константа 1
+         * @param expression добавляемый множитель
+         * @param exponent показатель степени множителя
          */
-        private Expression factorsExpression() {
+        public void addFactor(Expression expression, int exponent) {
+            factors.merge(expression, exponent, Math::addExact);
+        }
+
+        /**
+         * Возвращает накопленный коэффициент.
+         *
+         * @return числовой коэффициент произведения
+         */
+        public int coefficient() {
+            return coefficient;
+        }
+
+        /**
+         * Проверяет, содержит ли произведение только числовой коэффициент.
+         *
+         * @return {@code true}, если множители отсутствуют
+         */
+        public boolean isConstant() {
+            return factors.isEmpty();
+        }
+
+        /**
+         * Строит выражение из множителей без числового коэффициента.
+         *
+         * @return выражение из множителей либо единица
+         */
+        public Expression factorsExpression() {
             List<Expression> bases = new ArrayList<>(factors.keySet());
             // Единый порядок позволяет сравнить x*y и y*x.
             bases.sort(Comparator.comparing(Expression::toString));
@@ -117,19 +75,68 @@ final class Simplifier {
         }
 
         /**
-         * Строит выражение из собранного коэффициента и множителей.
+         * Строит произведение с учетом накопленного коэффициента.
          *
-         * @return произведение либо константа
+         * @return упрощенное произведение
          */
-        private Expression toExpression() {
+        public Expression toExpression() {
             if (coefficient == 0) {
                 return new Number(0);
             }
-            Expression body = factorsExpression();
-            if (body instanceof Number) {
+            if (factors.isEmpty()) {
                 return new Number(coefficient);
             }
+            Expression body = factorsExpression();
             return coefficient == 1 ? body : new Mul(new Number(coefficient), body);
+        }
+    }
+
+    /** Накопитель коэффициентов одинаковых слагаемых. */
+    public static final class Sum {
+        private final Map<Expression, Integer> terms = new LinkedHashMap<>();
+
+        /**
+         * Добавляет свободный числовой коэффициент.
+         *
+         * @param value добавляемая константа
+         */
+        public void addConstant(int value) {
+            terms.merge(null, value, Math::addExact);
+        }
+
+        /**
+         * Добавляет слагаемое с указанным коэффициентом.
+         *
+         * @param expression часть слагаемого без коэффициента
+         * @param coefficient коэффициент слагаемого
+         */
+        public void addTerm(Expression expression, int coefficient) {
+            terms.merge(expression, coefficient, Math::addExact);
+        }
+
+        /**
+         * Строит сумму из накопленных слагаемых.
+         *
+         * @return упрощенная сумма
+         */
+        public Expression toExpression() {
+            Expression result = null;
+            for (Map.Entry<Expression, Integer> term : terms.entrySet()) {
+                if (term.getValue() == 0) {
+                    continue;
+                }
+                Expression value;
+                if (term.getKey() == null) {
+                    value = new Number(term.getValue());
+                } else {
+                    Product product = new Product();
+                    product.multiplyCoefficient(term.getValue());
+                    product.addFactor(term.getKey(), 1);
+                    value = product.toExpression();
+                }
+                result = result == null ? value : new Add(result, value);
+            }
+            return result == null ? new Number(0) : result;
         }
     }
 }
