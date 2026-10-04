@@ -38,6 +38,9 @@ public final class Div extends BinaryExpression {
      */
     @Override
     protected int calculate(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Деление на ноль");
+        }
         return a / b;
     }
 
@@ -65,7 +68,7 @@ public final class Div extends BinaryExpression {
         Expression numerator = left.simplify();
         Expression denominator = right.simplify();
         if (numerator instanceof Number && denominator instanceof Number) {
-            int value = ((Number) numerator).getValue() / ((Number) denominator).getValue();
+            int value = calculate(((Number) numerator).getValue(), ((Number) denominator).getValue());
             return new Number(value);
         }
         return new Div(numerator, denominator);

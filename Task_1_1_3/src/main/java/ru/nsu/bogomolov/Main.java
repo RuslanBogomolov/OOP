@@ -78,10 +78,15 @@ public final class Main {
                 return null;
             }
             try {
-                return ExpressionParser.parse(scanner.nextLine());
+                Expression expression = ExpressionParser.parse(scanner.nextLine());
+                expression.simplify();
+                return expression;
             } catch (IllegalArgumentException exception) {
                 System.out.println("Неверное выражение: " + exception.getMessage());
                 System.out.println("Пример правильной записи: 3 + 2*x");
+            } catch (ArithmeticException exception) {
+                System.out.println("Ошибка вычисления: " + exception.getMessage());
+                System.out.println("Введите другое выражение.");
             }
         }
     }
