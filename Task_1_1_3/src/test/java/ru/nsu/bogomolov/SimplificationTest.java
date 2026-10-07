@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 import ru.nsu.bogomolov.expression.Expression;
+import ru.nsu.bogomolov.expression.Number;
 import ru.nsu.bogomolov.expression.Variable;
+import ru.nsu.bogomolov.expression.operation.Add;
 import ru.nsu.bogomolov.expression.operation.Mul;
 import ru.nsu.bogomolov.expression.operation.Pow;
 import ru.nsu.bogomolov.parser.ExpressionParser;
@@ -223,6 +225,20 @@ class SimplificationTest {
         assertEquals(3528, original.eval("X=2"));
         assertEquals(10368, derivative.eval("X=2"));
         assertEquals(text, original.toString());
+    }
+
+    @Test
+    void differentiatesCubeOfQuadraticExpression() {
+        Expression inner = new Add(
+                new Mul(new Variable("x"), new Variable("x")),
+                new Mul(new Number(3), new Variable("x")));
+        Expression function = new Mul(inner, new Mul(inner, inner));
+        Expression expected = new Mul(
+                new Number(3),
+                new Mul(new Mul(inner, inner),
+                        new Add(new Mul(new Number(2), new Variable("x")),
+                                new Number(3))));
+        assertEquals(expected.simplify(), function.derivative("x").simplify());
     }
 
     /**

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import ru.nsu.bogomolov.expression.Expression;
 import ru.nsu.bogomolov.expression.Number;
 import ru.nsu.bogomolov.expression.Variable;
+import ru.nsu.bogomolov.expression.operation.Add;
 
 /** Проверяет числовые выражения. */
 class NumberTest {
@@ -36,6 +37,12 @@ class NumberTest {
     @Test
     void hasZeroDerivative() {
         assertEquals(new Number(0), new Number(12).derivative("x"));
+    }
+
+    @Test
+    void differentiatesConstantExpressionToZero() {
+        assertEquals(new Number(0),
+                new Add(new Number(3), new Number(5)).derivative("x").simplify());
     }
 
     /**

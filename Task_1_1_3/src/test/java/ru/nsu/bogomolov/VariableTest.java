@@ -49,6 +49,14 @@ class VariableTest {
         assertEquals(new Number(0), new Variable("long_name").derivative("x"));
     }
 
+    @Test
+    void differentiatesRepeatedly() {
+        Expression expression = new Variable("x");
+        Expression firstDerivative = expression.derivative("x");
+        assertEquals(new Number(1), firstDerivative);
+        assertEquals(new Number(0), firstDerivative.derivative("x"));
+    }
+
     /**
      * Проверяет создание упрощенной переменной с тем же именем.
      */

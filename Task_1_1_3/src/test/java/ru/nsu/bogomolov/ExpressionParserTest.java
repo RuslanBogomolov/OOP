@@ -6,6 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import ru.nsu.bogomolov.expression.Expression;
+import ru.nsu.bogomolov.expression.Number;
+import ru.nsu.bogomolov.expression.Variable;
+import ru.nsu.bogomolov.expression.operation.Add;
+import ru.nsu.bogomolov.expression.operation.Div;
+import ru.nsu.bogomolov.expression.operation.Mul;
+import ru.nsu.bogomolov.expression.operation.Sub;
 import ru.nsu.bogomolov.parser.ExpressionParser;
 
 /** Проверяет разбор арифметических выражений. */
@@ -73,6 +79,63 @@ class ExpressionParserTest {
     @Test
     void parsesNestedParentheses() {
         assertEquals("(x+2)", ExpressionParser.parse("(((x+2)))").toString());
+    }
+
+    @Test
+    void parsesSingleVariableWithNestedParentheses() {
+        assertEquals(new Variable("x"), ExpressionParser.parse("(((x)))"));
+    }
+
+    /**
+     * Проверяет разбор сложения с лишними вложенными скобками.
+     */
+    @Test
+    void parsesAdditionWithNestedParentheses() {
+        assertEquals(new Add(new Variable("x"), new Variable("y")),
+                ExpressionParser.parse("((x)+(y))"));
+    }
+
+    /**
+     * Проверяет разбор сложения с вложенным умножением.
+     */
+    @Test
+    void parsesAdditionWithNestedMultiplication() {
+        assertEquals(new Add(new Variable("a"),
+                        new Mul(new Variable("b"), new Variable("c"))),
+                ExpressionParser.parse("((a)+((b)*(c)))"));
+    }
+
+    @Test
+    void parsesMultiLetterVariables() {
+        assertEquals(new Add(new Variable("alpha"), new Variable("beta")),
+                ExpressionParser.parse("(alpha+beta)"));
+        assertEquals(new Mul(new Variable("veryLongVariableName"), new Variable("short")),
+                ExpressionParser.parse("(veryLongVariableName * short)"));
+    }
+
+    @Test
+    void parsesFormattingSpaces() {
+        Expression expected = new Add(new Variable("x"), new Variable("y"));
+        assertEquals(expected, ExpressionParser.parse("( x + y )"));
+        assertEquals(expected, ExpressionParser.parse("(x+ y)"));
+        assertEquals(expected, ExpressionParser.parse("(x +y)"));
+    }
+
+    @Test
+    void parsesNegativeNumbersInsideParentheses() {
+        assertEquals(new Number(-5), ExpressionParser.parse("(-5)"));
+        assertEquals(new Add(new Variable("x"), new Number(-3)),
+                ExpressionParser.parse("(x + (-3))"));
+    }
+
+    @Test
+    void parsesComplexExpressionTree() {
+        Expression expected = new Add(
+                new Mul(new Variable("a"), new Variable("b")),
+                new Div(
+                        new Sub(new Variable("c"), new Variable("d")),
+                        new Add(new Number(1), new Number(2))));
+        assertEquals(expected, ExpressionParser.parse("((a*b)+((c-d)/(1+2)))"));
     }
 
     /**
@@ -241,6 +304,16 @@ class ExpressionParserTest {
     @Test
     void rejectsUnknownOperation() {
         assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("x%2"));
+    }
+
+    @Test
+    void rejectsListedMalformedExpressions() {
+        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("(x+y"));
+        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("x+y)"));
+        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("(x # y)"));
+        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("()"));
+        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("(+)"));
+        assertThrows(IllegalArgumentException.class, () -> ExpressionParser.parse("(x++)"));
     }
 
     /**
