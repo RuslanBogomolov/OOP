@@ -11,10 +11,6 @@ import ru.nsu.bogomolov.graph.Graph;
 /** Последовательно выбирает вершины с нулевой входящей степенью. */
 public class KahnSort implements TopologicalSort {
 
-    /** Создаёт сортировщик по алгоритму Кана. */
-    public KahnSort() {
-    }
-
     @Override
     public List<Integer> sort(Graph graph) {
         List<Integer> vertices = graph.getVertices();

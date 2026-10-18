@@ -10,10 +10,6 @@ import ru.nsu.bogomolov.graph.Graph;
 /** Сортирует обходом в глубину с проверкой циклов по цветам вершин. */
 public class DepthFirstSort implements TopologicalSort {
 
-    /** Создаёт сортировщик на основе обхода в глубину. */
-    public DepthFirstSort() {
-    }
-
     @Override
     public List<Integer> sort(Graph graph) {
         Map<Integer, Integer> colors = new HashMap<>();
