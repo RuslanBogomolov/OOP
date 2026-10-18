@@ -17,10 +17,6 @@ public class IncidenceMatrixGraph extends AbstractGraph {
     private final Map<Integer, Integer> indices = new HashMap<>();
     private int edgeCount;
 
-    /** Создаёт пустой граф, хранящий рёбра матрицей инцидентности. */
-    public IncidenceMatrixGraph() {
-    }
-
     @Override
     public void addVertex(int vertex) {
         if (indices.containsKey(vertex)) {

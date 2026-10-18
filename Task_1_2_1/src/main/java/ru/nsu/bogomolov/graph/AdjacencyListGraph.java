@@ -14,10 +14,6 @@ import java.util.TreeSet;
 public class AdjacencyListGraph extends AbstractGraph {
     private final Map<Integer, Set<Integer>> adjacency = new TreeMap<>();
 
-    /** Создаёт пустой граф, хранящий рёбра списками смежности. */
-    public AdjacencyListGraph() {
-    }
-
     @Override
     public void addVertex(int vertex) {
         adjacency.putIfAbsent(vertex, new TreeSet<>());

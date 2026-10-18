@@ -12,10 +12,6 @@ import ru.nsu.bogomolov.sort.TopologicalSort;
 /** Пример чтения графа и запуска двух сортировок. */
 public class Main {
 
-    /** Создаёт объект, запускающий пример работы с графом. */
-    public Main() {
-    }
-
     /**
      * Запускает пример. Без аргументов читает examples/graph.txt.
      *

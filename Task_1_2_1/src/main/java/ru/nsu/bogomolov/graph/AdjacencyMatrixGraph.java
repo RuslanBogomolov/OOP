@@ -15,10 +15,6 @@ public class AdjacencyMatrixGraph extends AbstractGraph {
     private final List<Integer> vertices = new ArrayList<>();
     private final Map<Integer, Integer> indices = new HashMap<>();
 
-    /** Создаёт пустой граф, хранящий рёбра матрицей смежности. */
-    public AdjacencyMatrixGraph() {
-    }
-
     @Override
     public void addVertex(int vertex) {
         if (indices.containsKey(vertex)) {

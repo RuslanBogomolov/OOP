@@ -6,10 +6,6 @@ import java.util.StringJoiner;
 /** Общие операции, не зависящие от хранения графа. */
 public abstract class AbstractGraph implements Graph {
 
-    /** Создаёт базовую реализацию графа. */
-    public AbstractGraph() {
-    }
-
     /** Сравнивает вершины и рёбра независимо от способа хранения. */
     @Override
     public boolean equals(Object object) {
