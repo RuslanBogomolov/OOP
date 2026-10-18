@@ -54,66 +54,50 @@ loadScripts(document, 'script');</script>
 <h1 title="All Classes and Interfaces" class="title">All Classes and Interfaces</h1>
 </div>
 <div id="all-classes-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="all-classes-table-tab0" role="tab" aria-selected="true" aria-controls="all-classes-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table', 2)" class="active-table-tab">All Classes and Interfaces</button><button id="all-classes-table-tab2" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab2', 2)" class="table-tab">Classes</button><button id="all-classes-table-tab3" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab3', 2)" class="table-tab">Enum Classes</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="all-classes-table-tab0" role="tab" aria-selected="true" aria-controls="all-classes-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table', 2)" class="active-table-tab">All Classes and Interfaces</button><button id="all-classes-table-tab1" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab1', 2)" class="table-tab">Interfaces</button><button id="all-classes-table-tab2" role="tab" aria-selected="false" aria-controls="all-classes-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('all-classes-table', 'all-classes-table-tab2', 2)" class="table-tab">Classes</button></div>
 <div id="all-classes-table.tabpanel" role="tabpanel" aria-labelledby="all-classes-table-tab0">
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/game/BlackjackGame.html" title="class in ru.nsu.bogomolov.game">BlackjackGame</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/graph/AbstractGraph.html" title="class in ru.nsu.bogomolov.graph">AbstractGraph</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Консольная версия игры в блэкджек.</div>
+<div class="block">Общие операции, не зависящие от хранения графа.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/game/BlackjackRules.html" title="class in ru.nsu.bogomolov.game">BlackjackRules</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/graph/AdjacencyListGraph.html" title="class in ru.nsu.bogomolov.graph">AdjacencyListGraph</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Правила определения результата раунда.</div>
+<div class="block">Представляет ориентированный граф списком смежности.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/model/Card.html" title="class in ru.nsu.bogomolov.model">Card</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/graph/AdjacencyMatrixGraph.html" title="class in ru.nsu.bogomolov.graph">AdjacencyMatrixGraph</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Одна игральная карта с мастью и достоинством.</div>
+<div class="block">Представляет ориентированный граф матрицей смежности.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/ui/ConsoleInterface.html" title="class in ru.nsu.bogomolov.ui">ConsoleInterface</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/sort/DepthFirstSort.html" title="class in ru.nsu.bogomolov.sort">DepthFirstSort</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Отвечает за консольный ввод и вывод игры.</div>
+<div class="block">Сортирует обходом в глубину с проверкой циклов по цветам вершин.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/model/Dealer.html" title="class in ru.nsu.bogomolov.model">Dealer</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="ru/nsu/bogomolov/graph/Graph.html" title="interface in ru.nsu.bogomolov.graph">Graph</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Ориентированный граф без кратных рёбер.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/io/GraphFileReader.html" title="class in ru.nsu.bogomolov.io">GraphFileReader</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Читает количество вершин и рёбер, номера вершин, затем пары концов рёбер.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/graph/IncidenceMatrixGraph.html" title="class in ru.nsu.bogomolov.graph">IncidenceMatrixGraph</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Дилер в блэкджек.</div>
+<div class="block">Матрица инцидентности: строки — вершины, столбцы — рёбра.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/model/Deck.html" title="class in ru.nsu.bogomolov.model">Deck</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/sort/KahnSort.html" title="class in ru.nsu.bogomolov.sort">KahnSort</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Колода карт, из которой игроки берут карты.</div>
-</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/game/GameScore.html" title="class in ru.nsu.bogomolov.game">GameScore</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Хранит результаты сыгранных раундов.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/model/Hand.html" title="class in ru.nsu.bogomolov.model">Hand</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Карты, собранные одним участником текущего раунда.</div>
+<div class="block">Последовательно выбирает вершины с нулевой входящей степенью.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/Main.html" title="class in ru.nsu.bogomolov">Main</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Точка входа в консольную игру.</div>
+<div class="block">Пример чтения графа и запуска двух сортировок.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="ru/nsu/bogomolov/model/Nominal.html" title="enum class in ru.nsu.bogomolov.model">Nominal</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
-<div class="block">Достоинства карт и их базовые значения в игре.</div>
-</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/model/Participant.html" title="class in ru.nsu.bogomolov.model">Participant</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Общая логика игрока и дилера.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="ru/nsu/bogomolov/model/Player.html" title="class in ru.nsu.bogomolov.model">Player</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Игрок в блэкджек.</div>
-</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab3"><a href="ru/nsu/bogomolov/game/RoundResult.html" title="enum class in ru.nsu.bogomolov.game">RoundResult</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab3">
-<div class="block">Результат сравнения очков игрока и дилера.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab3"><a href="ru/nsu/bogomolov/model/Suit.html" title="enum class in ru.nsu.bogomolov.model">Suit</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab3">
-<div class="block">Четыре масти стандартной колоды.</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="ru/nsu/bogomolov/sort/TopologicalSort.html" title="interface in ru.nsu.bogomolov.sort">TopologicalSort</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="block">Алгоритм топологической сортировки ориентированного графа.</div>
 </div>
 </div>
 </div>

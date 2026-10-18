@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.bogomolov"},{"l":"ru.nsu.bogomolov.game"},{"l":"ru.nsu.bogomolov.model"},{"l":"ru.nsu.bogomolov.ui"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.bogomolov"},{"l":"ru.nsu.bogomolov.graph"},{"l":"ru.nsu.bogomolov.io"},{"l":"ru.nsu.bogomolov.sort"}];updateSearchResults();
