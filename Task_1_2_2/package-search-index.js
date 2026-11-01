@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.bogomolov"},{"l":"ru.nsu.bogomolov.hashtable"}];updateSearchResults();
