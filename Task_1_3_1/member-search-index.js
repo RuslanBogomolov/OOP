@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.bogomolov.search","c":"SubstringFinder","l":"find(String, String)","u":"find(java.lang.String,java.lang.String)"},{"p":"ru.nsu.bogomolov","c":"Main","l":"main(String[])","u":"main(java.lang.String[])","k":"6"},{"p":"ru.nsu.bogomolov.search","c":"SubstringFinder","l":"SubstringFinder()","u":"%3Cinit%3E()","k":"3"}];updateSearchResults();
