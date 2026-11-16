@@ -45,21 +45,34 @@ public class SubstringFinder {
 
         try (BufferedReader reader = Files.newBufferedReader(
                 Path.of(fileName), StandardCharsets.UTF_8)) {
-            int symbol;
-            while ((symbol = readCodePoint(reader)) != -1) {
-                // При несовпадении сохраняем уже найденный подходящий префикс.
-                while (matched > 0 && pattern[matched] != symbol) {
-                    matched = prefix[matched - 1];
+            char[] buffer = new char[8192];
+            char highSurrogate = 0;
+            int count;
+            while ((count = reader.read(buffer)) != -1) {
+                for (int i = 0; i < count; i++) {
+                    int symbol = buffer[i];
+                    if (highSurrogate != 0) {
+                        symbol = Character.toCodePoint(highSurrogate, buffer[i]);
+                        highSurrogate = 0;
+                    } else if (Character.isHighSurrogate(buffer[i])) {
+                        // Сохраняем первую половину пары, в том числе на границе буфера.
+                        highSurrogate = buffer[i];
+                        continue;
+                    }
+                    // При несовпадении сохраняем уже найденный подходящий префикс.
+                    while (matched > 0 && pattern[matched] != symbol) {
+                        matched = prefix[matched - 1];
+                    }
+                    if (pattern[matched] == symbol) {
+                        matched++;
+                    }
+                    if (matched == pattern.length) {
+                        positions.add(position - pattern.length + 1);
+                        // Следующее вхождение может пересекаться с найденным.
+                        matched = prefix[matched - 1];
+                    }
+                    position++;
                 }
-                if (pattern[matched] == symbol) {
-                    matched++;
-                }
-                if (matched == pattern.length) {
-                    positions.add(position - pattern.length + 1);
-                    // Следующее вхождение может пересекаться с найденным.
-                    matched = prefix[matched - 1];
-                }
-                position++;
             }
         }
         return positions;
@@ -86,22 +99,4 @@ public class SubstringFinder {
         return prefix;
     }
 
-    /**
-     * Читает кодовую точку, объединяя суррогатную пару в один символ.
-     * Декодер UTF-8 проверяет корректность входных данных.
-     *
-     * @param reader источник символов UTF-8
-     * @return кодовая точка или -1 в конце файла
-     * @throws IOException при ошибке чтения или некорректном UTF-8
-     */
-    private static int readCodePoint(BufferedReader reader) throws IOException {
-        int first = reader.read();
-        if (first == -1) {
-            return -1;
-        }
-        if (Character.isHighSurrogate((char) first)) {
-            return Character.toCodePoint((char) first, (char) reader.read());
-        }
-        return first;
-    }
 }
