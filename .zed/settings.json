@@ -1,0 +1,9 @@
+{
+  "lsp": {
+    "jdtls": {
+      "settings": {
+        "lombok_support": false
+      }
+    }
+  }
+}
